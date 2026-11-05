@@ -1,0 +1,26 @@
+# The promo rubric. Weights live here, not in Python, so they can be retuned
+# against the hand-labelled eval set without touching code.
+#
+# NOTE ON THE INVERTED AXIS: shorts-clipper scores `payoff` - tension that
+# RESOLVES inside the clip - as good. This assignment wants the opposite. The
+# prompts here were written fresh for that reason, not edited from the old
+# ones. Do not copy anything out of shorts-clipper's rerank.system.md.
+
+weights:
+  hook_strength:    0.30   # how hard the first 3s grabs. Gated in code too.
+  cliffhanger:      0.30   # tension UNRESOLVED at the cut. Inverted vs clipper.
+  standalone:       0.25   # comprehensible with zero series context
+  emotional_charge: 0.15   # does any of it actually land
+
+min_score: 6.0             # below this, do not ship it as a promo
+max_promos_per_episode: 2
+
+# Deterministic gates, checked in Python before anything is scored. A
+# candidate that fails a gate is rejected with the reason recorded - the model
+# never gets a vote on these.
+gates:
+  min_duration_s: 20.0
+  max_duration_s: 60.0
+  hook_deadline_s: 3.0     # a dialogue or ACTION beat must START by here
+  max_segments: 3
+  min_segment_s: 3.0

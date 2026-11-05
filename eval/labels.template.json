@@ -1,0 +1,23 @@
+{
+  "_comment": "Copy to labels.json and fill in. One object per episode. Written BEFORE the tool was run - that is the whole point of this file.",
+  "labelled_by": "Akhil",
+  "labelled_at": "2026-11-06",
+  "tool_had_been_run": false,
+  "labels": [
+    {
+      "episode": 1,
+      "in_one_sentence": "",
+      "segments": [
+        { "start_block": null, "end_block": null, "start_s": null, "end_s": null }
+      ],
+      "duration_s": null,
+      "hook": "the line or beat that lands in the first 3 seconds",
+      "cliffhanger": "the unresolved thing it cuts on",
+      "why": "one line - why a stranger would watch the episode after this",
+      "rejected": [
+        { "what": "the other span you considered", "why_not": "" }
+      ],
+      "confidence": "high | medium | low"
+    }
+  ]
+}

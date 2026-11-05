@@ -1,0 +1,57 @@
+# Kuku promo finder - LLM configuration.
+#
+# Carried over from shorts-clipper unchanged in shape, because the router
+# reads exactly these four blocks: tiers, fallback, providers, llm.
+#
+# HARD RULE, inherited and still load-bearing: ask the router for a TIER,
+# never a model. No model string belongs anywhere in src/.
+#     router.complete("candidates", prompt, system=..., json_schema=...)
+
+tiers:
+  candidates:
+    # Pass 1, one call per episode. 50 calls, high volume, recall task:
+    # find every span that could work, do not be tasteful about it.
+    provider: gemini
+    model: gemini-3.5-flash-lite
+  rank:
+    # Pass 2, season-wide. Scores the shortlist on the rubric. Precision task.
+    # Same model as pass 1 for now - see the note in shorts-clipper's
+    # settings.yaml: gemini-3.8-flash 503s on real payloads on this account.
+    # Move this up when that stops.
+    provider: gemini
+    model: gemini-3.5-flash-lite
+
+fallback:
+  provider: groq
+  model: llama-3.3-70b-versatile
+
+providers:
+  gemini:
+    api_key_env: GEMINI_API_KEY
+    # TODO verify at https://aistudio.google.com/rate-limit - these are
+    # deliberately conservative so the limiter throttles below the real
+    # ceiling rather than above it. A 429 costs more than the wait.
+    limits:
+      rpm: 10
+      tpm: 250000
+      rpd: 250
+
+  groq:
+    api_key_env: GROQ_API_KEY
+    base_url: https://api.groq.com/openai/v1
+    # TODO verify at https://console.groq.com/settings/limits
+    limits:
+      rpm: 30
+      tpm: 12000
+      rpd: 1000
+
+llm:
+  max_attempts: 4
+  backoff_base_s: 1.0
+  backoff_max_s: 60.0
+  backoff_jitter: 0.3
+  timeout_s: 120
+  failover_enabled: true
+  cache_enabled: true     # .llm_cache/ - re-running must not respend quota
+  log_calls: true         # llm.log, JSONL, one line per call. This is where
+                          # the real cost numbers for the doc come from.

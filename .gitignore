@@ -1,0 +1,26 @@
+# Kuku's content. NEVER COMMITTED.
+# The brief: "please don't publish or share it."
+pack/
+brief/
+
+# Secrets
+.env
+*.env
+!.env.example
+
+# LLM cache and call log
+.llm_cache/
+llm.log
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
