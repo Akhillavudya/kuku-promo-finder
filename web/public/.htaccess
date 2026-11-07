@@ -1,0 +1,50 @@
+# Apache directives for the static frontend on shared hosting.
+#
+# Vite copies everything in web/public/ into dist/ verbatim, so this file is
+# part of every build rather than something to remember to upload. It is inert
+# anywhere that is not Apache - the Render container ignores it completely.
+
+# --- caching -------------------------------------------------------------
+# Vite fingerprints every asset (index-DRQHBs8y.js), so an asset's contents
+# can never change under a given name: it is safe to cache for a year and
+# `immutable` tells the browser not to even revalidate.
+#
+# index.html is the opposite and must NOT be cached. It is the only file whose
+# name is stable, and it is what names the current fingerprinted bundle. Cached,
+# a visitor keeps loading the old bundle after a deploy and no amount of
+# reloading fixes it - that is the classic broken static deploy.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(js|css|woff2?|svg|png|jpg|jpeg|webp|avif|ico)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(html)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+  # The API lives on another origin, so nothing here should be framed or
+  # sniffed into something else.
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# --- compression ---------------------------------------------------------
+# The JS bundle is 190 kB raw and 60 kB gzipped. Worth having on.
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/javascript
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# --- single-page fallback ------------------------------------------------
+# Insurance, not a requirement: the app keeps its view in React state and has
+# no router, so only "/" is ever requested. If a reader hand-types a path, or
+# a router is added later, this serves the app instead of Apache's 404.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  # A real file or directory is served as itself.
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+  RewriteRule . /index.html [L]
+</IfModule>
