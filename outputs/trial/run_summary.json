@@ -1,0 +1,136 @@
+{
+  "profile": "profile free [free]  candidates=gemini:gemini-3.5-flash-lite  rank=gemini:gemini-3.5-flash-lite",
+  "paid": false,
+  "finished_at": "2026-11-07 18:18:57",
+  "elapsed_s": 129.1,
+  "n_episodes": 8,
+  "n_candidates_proposed": 24,
+  "n_passed_gates": 13,
+  "n_rejected_by_gates": 11,
+  "n_unscored": 0,
+  "n_promos": 9,
+  "rejections_by_gate": {
+    "too_short": 10,
+    "no_hook_in_3s": 1
+  },
+  "rank_passes": 2,
+  "rank_batch": 12,
+  "score_spread": {
+    "n_multi_pass": 13,
+    "median": 0.4,
+    "mean": 0.48,
+    "max": 1.05,
+    "n_over_1_point": 3,
+    "worst": [
+      {
+        "id": "ep010-c1",
+        "spread": 1.05,
+        "passes": [
+          {
+            "hook_strength": 8,
+            "cliffhanger": 6,
+            "standalone": 7,
+            "emotional_charge": 7
+          },
+          {
+            "hook_strength": 6,
+            "cliffhanger": 5,
+            "standalone": 7,
+            "emotional_charge": 6
+          }
+        ]
+      },
+      {
+        "id": "ep010-c3",
+        "spread": 1.0,
+        "passes": [
+          {
+            "hook_strength": 6,
+            "cliffhanger": 9,
+            "standalone": 7,
+            "emotional_charge": 8
+          },
+          {
+            "hook_strength": 6,
+            "cliffhanger": 7,
+            "standalone": 6,
+            "emotional_charge": 7
+          }
+        ]
+      },
+      {
+        "id": "ep034-c3",
+        "spread": 1.0,
+        "passes": [
+          {
+            "hook_strength": 9,
+            "cliffhanger": 6,
+            "standalone": 8,
+            "emotional_charge": 8
+          },
+          {
+            "hook_strength": 8,
+            "cliffhanger": 5,
+            "standalone": 7,
+            "emotional_charge": 7
+          }
+        ]
+      }
+    ]
+  },
+  "n_dropped_in_selection": 4,
+  "selection_drops_by_rule": {
+    "episode_cap": 2,
+    "min_cliffhanger": 1,
+    "dedup": 1
+  },
+  "episodes_with_no_promo": [
+    4,
+    13,
+    21
+  ],
+  "n_episodes_with_no_promo": 3,
+  "episode_call_failures": [],
+  "duration_repairs": 4,
+  "hook_types": {
+    "accusation": 2,
+    "defiance": 1,
+    "violence": 1,
+    "humiliation": 1,
+    "intrusion": 1,
+    "threat": 1,
+    "romance": 1,
+    "reveal": 1
+  },
+  "n_hooks_unlabelled": 0,
+  "n_axes_missing": 0,
+  "candidates_with_a_missing_axis": [],
+  "spend": {
+    "calls": 368,
+    "cached_calls": 170,
+    "by_model": {
+      "gemini-3.5-flash-lite": {
+        "tokens_in": 949084.0,
+        "tokens_out": 131258.0,
+        "usd": 0.0
+      },
+      "gemini-3.5-flash": {
+        "tokens_in": 13797.0,
+        "tokens_out": 1802.0,
+        "usd": 0.0
+      }
+    },
+    "usd_total": 0.0
+  },
+  "rubric": {
+    "weights": {
+      "hook_strength": 0.3,
+      "cliffhanger": 0.3,
+      "standalone": 0.25,
+      "emotional_charge": 0.15
+    },
+    "min_score": 6.0,
+    "min_cliffhanger": 5,
+    "max_promos_per_episode": 2
+  }
+}

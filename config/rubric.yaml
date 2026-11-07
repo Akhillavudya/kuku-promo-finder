@@ -13,6 +13,13 @@ weights:
   emotional_charge: 0.15   # does any of it actually land
 
 min_score: 6.0             # below this, do not ship it as a promo
+
+# A floor on one axis, not just on the total. The brief requires a cliffhanger
+# by name, so a promo whose own scorer says the tension resolves inside the clip
+# has failed a requirement - it has not merely scored a bit low. Without this,
+# cliffhanger 3 costs only 2.1 weighted points and three strong axes outvote it
+# (measured: ep018-c2 shipped at 6.50 with cliffhanger 3). See notes/ACCURACY.md #2.
+min_cliffhanger: 5         # unresolved at the cut, or it is not a promo
 max_promos_per_episode: 2
 
 # Deterministic gates, checked in Python before anything is scored. A

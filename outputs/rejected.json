@@ -1,0 +1,2352 @@
+{
+  "note": "Every candidate the model proposed that a deterministic gate threw out, plus the gate and the measured number. Kept on purpose: these counts are the quality evidence.",
+  "by_gate": {
+    "too_short": 66,
+    "no_hook_in_3s": 3,
+    "segment_too_short": 2
+  },
+  "rejected": [
+    {
+      "id": "ep002-c3",
+      "episode": 2,
+      "hook": "\"I may leave this chapel without a husband...\"",
+      "duration_s": 11.5,
+      "segments": [
+        {
+          "start_block": 70,
+          "end_block": 73,
+          "start": "01:38.50",
+          "end": "01:50.00",
+          "start_s": 98.5,
+          "end_s": 110.0,
+          "duration_s": 11.5
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "11.50s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep003-c1",
+      "episode": 3,
+      "hook": "\"Take your hands off her.\"",
+      "duration_s": 19.5,
+      "segments": [
+        {
+          "start_block": 56,
+          "end_block": 71,
+          "start": "01:06.00",
+          "end": "01:25.50",
+          "start_s": 66.0,
+          "end_s": 85.5,
+          "duration_s": 19.5
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "19.50s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep004-c1",
+      "episode": 4,
+      "hook": "A penniless nobody for a discarded bride.",
+      "duration_s": 10.8,
+      "segments": [
+        {
+          "start_block": 4,
+          "end_block": 11,
+          "start": "00:03.40",
+          "end": "00:14.20",
+          "start_s": 3.4,
+          "end_s": 14.2,
+          "duration_s": 10.8
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "10.80s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep004-c2",
+      "episode": 4,
+      "hook": "You have thrown yourself away!",
+      "duration_s": 19.7,
+      "segments": [
+        {
+          "start_block": 85,
+          "end_block": 98,
+          "start": "01:54.80",
+          "end": "02:14.50",
+          "start_s": 114.8,
+          "end_s": 134.5,
+          "duration_s": 19.7
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "19.70s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep005-c1",
+      "episode": 5,
+      "hook": "Lady Ashcroft violently wrenches it out of Juliana's grip.",
+      "duration_s": 10.6,
+      "segments": [
+        {
+          "start_block": 30,
+          "end_block": 36,
+          "start": "00:54.00",
+          "end": "01:04.60",
+          "start_s": 54.0,
+          "end_s": 64.6,
+          "duration_s": 10.6
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "10.60s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep005-c2",
+      "episode": 5,
+      "hook": "\"A noblewoman reduced to a beggar's wife!\"",
+      "duration_s": 9.8,
+      "segments": [
+        {
+          "start_block": 53,
+          "end_block": 57,
+          "start": "01:31.00",
+          "end": "01:40.80",
+          "start_s": 91.0,
+          "end_s": 100.8,
+          "duration_s": 9.8
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "9.80s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep005-c3",
+      "episode": 5,
+      "hook": "\"You will not leave this church carrying the Ashcroft name.\"",
+      "duration_s": 14.0,
+      "segments": [
+        {
+          "start_block": 6,
+          "end_block": 11,
+          "start": "00:06.80",
+          "end": "00:20.80",
+          "start_s": 6.8,
+          "end_s": 20.8,
+          "duration_s": 14.0
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "14.00s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep006-c1",
+      "episode": 6,
+      "hook": "Juliana vigorously scrubs the damp table, saying 'If I stop now, I will think about everything I lost.'",
+      "duration_s": 12.7,
+      "segments": [
+        {
+          "start_block": 56,
+          "end_block": 64,
+          "start": "01:04.10",
+          "end": "01:16.80",
+          "start_s": 64.1,
+          "end_s": 76.8,
+          "duration_s": 12.7
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "12.70s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep006-c2",
+      "episode": 6,
+      "hook": "Juliana steps inside the barren, leaking stone cottage.",
+      "duration_s": 13.6,
+      "segments": [
+        {
+          "start_block": 30,
+          "end_block": 41,
+          "start": "00:33.70",
+          "end": "00:47.30",
+          "start_s": 33.7,
+          "end_s": 47.3,
+          "duration_s": 13.6
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "13.60s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep006-c3",
+      "episode": 6,
+      "hook": "Juliana whispers 'I lost my home today... my family' as the fire glows.",
+      "duration_s": 15.2,
+      "segments": [
+        {
+          "start_block": 81,
+          "end_block": 93,
+          "start": "01:33.80",
+          "end": "01:49.00",
+          "start_s": 93.8,
+          "end_s": 109.0,
+          "duration_s": 15.2
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "15.20s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep008-c2",
+      "episode": 8,
+      "hook": "\"And the scars... were they from the war?\"",
+      "duration_s": 16.6,
+      "segments": [
+        {
+          "start_block": 48,
+          "end_block": 61,
+          "start": "00:58.70",
+          "end": "01:15.30",
+          "start_s": 58.7,
+          "end_s": 75.3,
+          "duration_s": 16.6
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "16.60s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep008-c3",
+      "episode": 8,
+      "hook": "\"Yarrow.\"",
+      "duration_s": 13.7,
+      "segments": [
+        {
+          "start_block": 10,
+          "end_block": 20,
+          "start": "00:10.50",
+          "end": "00:24.20",
+          "start_s": 10.5,
+          "end_s": 24.2,
+          "duration_s": 13.7
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "13.70s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep010-c2",
+      "episode": 10,
+      "hook": "Alexander removes his shirt to reveal a torso crisscrossed with brutal scars.",
+      "duration_s": 52.7,
+      "segments": [
+        {
+          "start_block": 26,
+          "end_block": 58,
+          "start": "00:33.20",
+          "end": "01:25.90",
+          "start_s": 33.2,
+          "end_s": 85.9,
+          "duration_s": 52.7
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "no_hook_in_3s",
+          "detail": "no dialogue or ACTION beat starts within 3.0s of 00:33.20; the promo opens on CAMERA"
+        }
+      ]
+    },
+    {
+      "id": "ep011-c1",
+      "episode": 11,
+      "hook": "\"Your husband stole my gold pocket watch!\"",
+      "duration_s": 3.2,
+      "segments": [
+        {
+          "start_block": 15,
+          "end_block": 17,
+          "start": "00:16.80",
+          "end": "00:20.00",
+          "start_s": 16.8,
+          "end_s": 20.0,
+          "duration_s": 3.2
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "3.20s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep011-c2",
+      "episode": 11,
+      "hook": "The constable pulls a gleaming gold pocket watch from Alexander's coat.",
+      "duration_s": 15.6,
+      "segments": [
+        {
+          "start_block": 75,
+          "end_block": 83,
+          "start": "01:31.00",
+          "end": "01:46.60",
+          "start_s": 91.0,
+          "end_s": 106.6,
+          "duration_s": 15.6
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "15.60s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep011-c3",
+      "episode": 11,
+      "hook": "\"You planted this accusation because you cannot bear that I am happy without you!\"",
+      "duration_s": 11.9,
+      "segments": [
+        {
+          "start_block": 62,
+          "end_block": 68,
+          "start": "01:12.10",
+          "end": "01:24.00",
+          "start_s": 72.1,
+          "end_s": 84.0,
+          "duration_s": 11.9
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "11.90s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep013-c1",
+      "episode": 13,
+      "hook": "Sharp blackthorn spines rake across Juliana's fingers and knuckles, carving bloody gashes across her skin.",
+      "duration_s": 13.0,
+      "segments": [
+        {
+          "start_block": 35,
+          "end_block": 43,
+          "start": "00:54.00",
+          "end": "01:07.00",
+          "start_s": 54.0,
+          "end_s": 67.0,
+          "duration_s": 13.0
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "13.00s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep013-c2",
+      "episode": 13,
+      "hook": "Juliana gets snagged between two vicious thorns, tearing her sleeve and flesh, screaming in pain.",
+      "duration_s": 16.0,
+      "segments": [
+        {
+          "start_block": 50,
+          "end_block": 61,
+          "start": "01:18.00",
+          "end": "01:34.00",
+          "start_s": 78.0,
+          "end_s": 94.0,
+          "duration_s": 16.0
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "16.00s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep013-c3",
+      "episode": 13,
+      "hook": "Her blood-smeared index finger brushes against a solid metallic object half-buried in the frozen dirt.",
+      "duration_s": 9.0,
+      "segments": [
+        {
+          "start_block": 66,
+          "end_block": 74,
+          "start": "01:43.00",
+          "end": "01:52.00",
+          "start_s": 103.0,
+          "end_s": 112.0,
+          "duration_s": 9.0
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "9.00s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep016-c1",
+      "episode": 16,
+      "hook": "Alexander lifts the thug onto his tiptoes against the cottage wall, glaring with lethal intensity.",
+      "duration_s": 11.4,
+      "segments": [
+        {
+          "start_block": 33,
+          "end_block": 43,
+          "start": "00:40.80",
+          "end": "00:52.20",
+          "start_s": 40.8,
+          "end_s": 52.2,
+          "duration_s": 11.4
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "11.40s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep016-c2",
+      "episode": 16,
+      "hook": "The thug swings the club down with full force, but Alexander catches the weapon mid-air.",
+      "duration_s": 14.2,
+      "segments": [
+        {
+          "start_block": 11,
+          "end_block": 25,
+          "start": "00:14.30",
+          "end": "00:28.50",
+          "start_s": 14.3,
+          "end_s": 28.5,
+          "duration_s": 14.2
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "14.20s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep017-c1",
+      "episode": 17,
+      "hook": "I was frightened",
+      "duration_s": 5.7,
+      "segments": [
+        {
+          "start_block": 40,
+          "end_block": 44,
+          "start": "00:56.50",
+          "end": "01:02.20",
+          "start_s": 56.5,
+          "end_s": 62.2,
+          "duration_s": 5.7
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "5.70s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep017-c2",
+      "episode": 17,
+      "hook": "Thank you",
+      "duration_s": 17.2,
+      "segments": [
+        {
+          "start_block": 10,
+          "end_block": 22,
+          "start": "00:14.30",
+          "end": "00:31.50",
+          "start_s": 14.3,
+          "end_s": 31.5,
+          "duration_s": 17.2
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "17.20s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep019-c2",
+      "episode": 19,
+      "hook": "\"My mother is a prisoner in her own house.\"",
+      "duration_s": 12.7,
+      "segments": [
+        {
+          "start_block": 41,
+          "end_block": 49,
+          "start": "01:16.20",
+          "end": "01:28.90",
+          "start_s": 76.2,
+          "end_s": 88.9,
+          "duration_s": 12.7
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "12.70s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep019-c3",
+      "episode": 19,
+      "hook": "\"We have lost everything.\"",
+      "duration_s": 15.3,
+      "segments": [
+        {
+          "start_block": 53,
+          "end_block": 61,
+          "start": "01:37.20",
+          "end": "01:52.50",
+          "start_s": 97.2,
+          "end_s": 112.5,
+          "duration_s": 15.3
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "15.30s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep020-c3",
+      "episode": 20,
+      "hook": "Let the peasants rot in their barns.",
+      "duration_s": 19.3,
+      "segments": [
+        {
+          "start_block": 56,
+          "end_block": 67,
+          "start": "01:29.90",
+          "end": "01:49.20",
+          "start_s": 89.9,
+          "end_s": 109.2,
+          "duration_s": 19.3
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "19.30s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep021-c1",
+      "episode": 21,
+      "hook": "\"Lady Juliana! Please! You have to help me, Toby is dying!\"",
+      "duration_s": 17.5,
+      "segments": [
+        {
+          "start_block": 4,
+          "end_block": 13,
+          "start": "00:04.20",
+          "end": "00:21.70",
+          "start_s": 4.2,
+          "end_s": 21.7,
+          "duration_s": 17.5
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "17.50s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep021-c2",
+      "episode": 21,
+      "hook": "\"At the grand manor, they ignore us. They only care about their own luxury.\"",
+      "duration_s": 17.4,
+      "segments": [
+        {
+          "start_block": 63,
+          "end_block": 72,
+          "start": "01:31.00",
+          "end": "01:48.40",
+          "start_s": 91.0,
+          "end_s": 108.4,
+          "duration_s": 17.4
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "17.40s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep021-c3",
+      "episode": 21,
+      "hook": "\"Lady Juliana! Please! You have to help me, Toby is dying!\"",
+      "duration_s": 17.5,
+      "segments": [
+        {
+          "start_block": 4,
+          "end_block": 9,
+          "start": "00:04.20",
+          "end": "00:15.00",
+          "start_s": 4.2,
+          "end_s": 15.0,
+          "duration_s": 10.8
+        },
+        {
+          "start_block": 11,
+          "end_block": 13,
+          "start": "00:15.00",
+          "end": "00:21.70",
+          "start_s": 15.0,
+          "end_s": 21.7,
+          "duration_s": 6.7
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "17.50s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep021-c4",
+      "episode": 21,
+      "hook": "Lady Juliana turns sharply, her eyes widening with sudden recognition.",
+      "duration_s": 11.9,
+      "segments": [
+        {
+          "start_block": 65,
+          "end_block": 72,
+          "start": "01:36.50",
+          "end": "01:48.40",
+          "start_s": 96.5,
+          "end_s": 108.4,
+          "duration_s": 11.9
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "11.90s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep022-c2",
+      "episode": 22,
+      "hook": "Lady Juliana quietly turns the ornate brass door knob.",
+      "duration_s": 26.8,
+      "segments": [
+        {
+          "start_block": 62,
+          "end_block": 80,
+          "start": "01:42.00",
+          "end": "02:08.80",
+          "start_s": 102.0,
+          "end_s": 128.8,
+          "duration_s": 26.8
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "no_hook_in_3s",
+          "detail": "no dialogue or ACTION beat starts within 3.0s of 01:42.00; the promo opens on CAMERA"
+        }
+      ]
+    },
+    {
+      "id": "ep023-c1",
+      "episode": 23,
+      "hook": "\"Someone is poisoning her.\"",
+      "duration_s": 9.0,
+      "segments": [
+        {
+          "start_block": 39,
+          "end_block": 44,
+          "start": "01:19.00",
+          "end": "01:28.00",
+          "start_s": 79.0,
+          "end_s": 88.0,
+          "duration_s": 9.0
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "9.00s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep023-c3",
+      "episode": 23,
+      "hook": "\"I have seen these symptoms before.\"",
+      "duration_s": 17.5,
+      "segments": [
+        {
+          "start_block": 34,
+          "end_block": 44,
+          "start": "01:10.50",
+          "end": "01:28.00",
+          "start_s": 70.5,
+          "end_s": 88.0,
+          "duration_s": 17.5
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "17.50s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep024-c1",
+      "episode": 24,
+      "hook": "The noblewoman suddenly rears back her riding crop and strikes Juliana violently across the torso.",
+      "duration_s": 17.0,
+      "segments": [
+        {
+          "start_block": 22,
+          "end_block": 35,
+          "start": "00:31.00",
+          "end": "00:48.00",
+          "start_s": 31.0,
+          "end_s": 48.0,
+          "duration_s": 17.0
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "17.00s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep024-c3",
+      "episode": 24,
+      "hook": "Juliana grips a coarse scrubbing brush and vigorously scrapes the thick black ash.",
+      "duration_s": 19.0,
+      "segments": [
+        {
+          "start_block": 56,
+          "end_block": 68,
+          "start": "01:12.50",
+          "end": "01:31.50",
+          "start_s": 72.5,
+          "end_s": 91.5,
+          "duration_s": 19.0
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "19.00s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep025-c1",
+      "episode": 25,
+      "hook": "Alexander's gloved fingers pull back the torn fabric revealing a raw, bloody welt.",
+      "duration_s": 19.0,
+      "segments": [
+        {
+          "start_block": 13,
+          "end_block": 23,
+          "start": "00:18.80",
+          "end": "00:37.80",
+          "start_s": 18.8,
+          "end_s": 37.8,
+          "duration_s": 19.0
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "19.00s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep025-c2",
+      "episode": 25,
+      "hook": "Juliana reveals the truth: \"Poison. Arsenic.\"",
+      "duration_s": 17.9,
+      "segments": [
+        {
+          "start_block": 47,
+          "end_block": 54,
+          "start": "01:19.50",
+          "end": "01:37.40",
+          "start_s": 79.5,
+          "end_s": 97.4,
+          "duration_s": 17.9
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "17.90s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep025-c3",
+      "episode": 25,
+      "hook": "Alexander erupts: \"Because you were standing inside a house where someone is poisoning a woman... and you never told me.\"",
+      "duration_s": 18.4,
+      "segments": [
+        {
+          "start_block": 75,
+          "end_block": 84,
+          "start": "02:08.00",
+          "end": "02:26.40",
+          "start_s": 128.0,
+          "end_s": 146.4,
+          "duration_s": 18.4
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "18.40s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep026-c3",
+      "episode": 26,
+      "hook": "\"Do not move! Where did you get this ring?\"",
+      "duration_s": 6.3,
+      "segments": [
+        {
+          "start_block": 46,
+          "end_block": 50,
+          "start": "01:49.20",
+          "end": "01:55.50",
+          "start_s": 109.2,
+          "end_s": 115.5,
+          "duration_s": 6.3
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "6.30s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep028-c1",
+      "episode": 28,
+      "hook": "I was poisoned! And you... you knew!",
+      "duration_s": 13.0,
+      "segments": [
+        {
+          "start_block": 28,
+          "end_block": 35,
+          "start": "00:35.00",
+          "end": "00:48.00",
+          "start_s": 35.0,
+          "end_s": 48.0,
+          "duration_s": 13.0
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "13.00s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep028-c2",
+      "episode": 28,
+      "hook": "Catherine ruthlessly yanks the silver locket off Juliana's neck.",
+      "duration_s": 7.8,
+      "segments": [
+        {
+          "start_block": 52,
+          "end_block": 58,
+          "start": "01:10.80",
+          "end": "01:18.60",
+          "start_s": 70.8,
+          "end_s": 78.6,
+          "duration_s": 7.8
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "7.80s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep028-c3",
+      "episode": 28,
+      "hook": "Lady Juliana Ashcroft.",
+      "duration_s": 14.8,
+      "segments": [
+        {
+          "start_block": 72,
+          "end_block": 79,
+          "start": "01:38.20",
+          "end": "01:53.00",
+          "start_s": 98.2,
+          "end_s": 113.0,
+          "duration_s": 14.8
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "14.80s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep028-c4",
+      "episode": 28,
+      "hook": "Do not speak about my husband!",
+      "duration_s": 15.4,
+      "segments": [
+        {
+          "start_block": 81,
+          "end_block": 89,
+          "start": "01:53.30",
+          "end": "02:08.70",
+          "start_s": 113.3,
+          "end_s": 128.7,
+          "duration_s": 15.4
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "15.40s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep030-c1",
+      "episode": 30,
+      "hook": "The Elder Nobleman thrusts the gold knob of his walking stick directly against Rupert's chest",
+      "duration_s": 6.4,
+      "segments": [
+        {
+          "start_block": 16,
+          "end_block": 18,
+          "start": "00:33.40",
+          "end": "00:39.80",
+          "start_s": 33.4,
+          "end_s": 39.8,
+          "duration_s": 6.4
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "6.40s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep030-c2",
+      "episode": 30,
+      "hook": "\"Then call it witchcraft.\"",
+      "duration_s": 7.8,
+      "segments": [
+        {
+          "start_block": 41,
+          "end_block": 46,
+          "start": "01:25.60",
+          "end": "01:33.40",
+          "start_s": 85.6,
+          "end_s": 93.4,
+          "duration_s": 7.8
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "7.80s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep032-c1",
+      "episode": 32,
+      "hook": "\"You have to threaten a chained woman to feel powerful!\"",
+      "duration_s": 19.38,
+      "segments": [
+        {
+          "start_block": 102,
+          "end_block": 116,
+          "start": "02:15.00",
+          "end": "02:34.38",
+          "start_s": 135.0,
+          "end_s": 154.38,
+          "duration_s": 19.38
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "19.38s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep032-c3",
+      "episode": 32,
+      "hook": "\"Until you have nothing left beneath it.\"",
+      "duration_s": 15.7,
+      "segments": [
+        {
+          "start_block": 83,
+          "end_block": 94,
+          "start": "01:49.50",
+          "end": "02:05.20",
+          "start_s": 109.5,
+          "end_s": 125.2,
+          "duration_s": 15.7
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "15.70s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep033-c1",
+      "episode": 33,
+      "hook": "\"One word from me, and the county gaol will take him before sunrise.\"",
+      "duration_s": 14.6,
+      "segments": [
+        {
+          "start_block": 39,
+          "end_block": 46,
+          "start": "01:04.40",
+          "end": "01:19.00",
+          "start_s": 64.4,
+          "end_s": 79.0,
+          "duration_s": 14.6
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "14.60s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep033-c2",
+      "episode": 33,
+      "hook": "\"That is witchcraft.\"",
+      "duration_s": 19.5,
+      "segments": [
+        {
+          "start_block": 74,
+          "end_block": 84,
+          "start": "02:04.50",
+          "end": "02:24.00",
+          "start_s": 124.5,
+          "end_s": 144.0,
+          "duration_s": 19.5
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "19.50s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep033-c3",
+      "episode": 33,
+      "hook": "\"And now... you will save your brother.\"",
+      "duration_s": 9.0,
+      "segments": [
+        {
+          "start_block": 91,
+          "end_block": 94,
+          "start": "02:32.50",
+          "end": "02:41.50",
+          "start_s": 152.5,
+          "end_s": 161.5,
+          "duration_s": 9.0
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "9.00s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep035-c2",
+      "episode": 35,
+      "hook": "Then why did they never tell us?",
+      "duration_s": 12.0,
+      "segments": [
+        {
+          "start_block": 56,
+          "end_block": 61,
+          "start": "02:02.00",
+          "end": "02:14.00",
+          "start_s": 122.0,
+          "end_s": 134.0,
+          "duration_s": 12.0
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "12.00s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep035-c3",
+      "episode": 35,
+      "hook": "Someone ordered my men to die.",
+      "duration_s": 13.0,
+      "segments": [
+        {
+          "start_block": 65,
+          "end_block": 70,
+          "start": "02:17.00",
+          "end": "02:30.00",
+          "start_s": 137.0,
+          "end_s": 150.0,
+          "duration_s": 13.0
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "13.00s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep036-c2",
+      "episode": 36,
+      "hook": "\"Then they have two days to celebrate.\"",
+      "duration_s": 16.25,
+      "segments": [
+        {
+          "start_block": 114,
+          "end_block": 119,
+          "start": "03:04.50",
+          "end": "03:20.75",
+          "start_s": 184.5,
+          "end_s": 200.75,
+          "duration_s": 16.25
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "16.25s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep037-c1",
+      "episode": 37,
+      "hook": "They think hunger will make me surrender.",
+      "duration_s": 28.2,
+      "segments": [
+        {
+          "start_block": 48,
+          "end_block": 62,
+          "start": "01:28.00",
+          "end": "01:56.20",
+          "start_s": 88.0,
+          "end_s": 116.2,
+          "duration_s": 28.2
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "no_hook_in_3s",
+          "detail": "no dialogue or ACTION beat starts within 3.0s of 01:28.00; the promo opens on CAMERA"
+        }
+      ]
+    },
+    {
+      "id": "ep037-c2",
+      "episode": 37,
+      "hook": "And no one will question what happened to the woman who tried to stop us.",
+      "duration_s": 15.7,
+      "segments": [
+        {
+          "start_block": 10,
+          "end_block": 19,
+          "start": "00:18.80",
+          "end": "00:34.50",
+          "start_s": 18.8,
+          "end_s": 34.5,
+          "duration_s": 15.7
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "15.70s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep037-c3",
+      "episode": 37,
+      "hook": "Not just an execution. A warning.",
+      "duration_s": 18.0,
+      "segments": [
+        {
+          "start_block": 41,
+          "end_block": 47,
+          "start": "01:09.50",
+          "end": "01:27.50",
+          "start_s": 69.5,
+          "end_s": 87.5,
+          "duration_s": 18.0
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "18.00s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep038-c2",
+      "episode": 38,
+      "hook": "Juliana's eyes snap wide open in sudden realization as church bells toll.",
+      "duration_s": 19.5,
+      "segments": [
+        {
+          "start_block": 42,
+          "end_block": 54,
+          "start": "01:04.50",
+          "end": "01:24.00",
+          "start_s": 64.5,
+          "end_s": 84.0,
+          "duration_s": 19.5
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "19.50s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep038-c3",
+      "episode": 38,
+      "hook": "Juliana rushes toward the front of the cell, clutching the iron bars.",
+      "duration_s": 13.0,
+      "segments": [
+        {
+          "start_block": 47,
+          "end_block": 54,
+          "start": "01:11.00",
+          "end": "01:24.00",
+          "start_s": 71.0,
+          "end_s": 84.0,
+          "duration_s": 13.0
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "13.00s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep040-c1",
+      "episode": 40,
+      "hook": "Imagine Juliana seeing this.",
+      "duration_s": 11.0,
+      "segments": [
+        {
+          "start_block": 11,
+          "end_block": 16,
+          "start": "00:23.20",
+          "end": "00:34.20",
+          "start_s": 23.2,
+          "end_s": 34.2,
+          "duration_s": 11.0
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "11.00s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep040-c2",
+      "episode": 40,
+      "hook": "All entrances are covered?",
+      "duration_s": 12.4,
+      "segments": [
+        {
+          "start_block": 31,
+          "end_block": 37,
+          "start": "01:05.00",
+          "end": "01:17.40",
+          "start_s": 65.0,
+          "end_s": 77.4,
+          "duration_s": 12.4
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "12.40s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep040-c3",
+      "episode": 40,
+      "hook": "We have an excellent view.",
+      "duration_s": 6.3,
+      "segments": [
+        {
+          "start_block": 21,
+          "end_block": 24,
+          "start": "00:42.00",
+          "end": "00:48.30",
+          "start_s": 42.0,
+          "end_s": 48.3,
+          "duration_s": 6.3
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "6.30s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep041-c1",
+      "episode": 41,
+      "hook": "\"You needed an entire chapel to feel powerful over one chained woman?\"",
+      "duration_s": 5.7,
+      "segments": [
+        {
+          "start_block": 32,
+          "end_block": 33,
+          "start": "00:57.80",
+          "end": "01:00.50",
+          "start_s": 57.8,
+          "end_s": 60.5,
+          "duration_s": 2.7
+        },
+        {
+          "start_block": 46,
+          "end_block": 47,
+          "start": "01:21.00",
+          "end": "01:24.00",
+          "start_s": 81.0,
+          "end_s": 84.0,
+          "duration_s": 3.0
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "segment_too_short",
+          "detail": "segment 1 is 2.70s, minimum is 3.0s"
+        },
+        {
+          "gate": "too_short",
+          "detail": "5.70s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep041-c2",
+      "episode": 41,
+      "hook": "Juliana is marched forward by armed constables in heavy iron shackles.",
+      "duration_s": 5.5,
+      "segments": [
+        {
+          "start_block": 12,
+          "end_block": 14,
+          "start": "00:17.50",
+          "end": "00:20.00",
+          "start_s": 17.5,
+          "end_s": 20.0,
+          "duration_s": 2.5
+        },
+        {
+          "start_block": 46,
+          "end_block": 47,
+          "start": "01:21.00",
+          "end": "01:24.00",
+          "start_s": 81.0,
+          "end_s": 84.0,
+          "duration_s": 3.0
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "segment_too_short",
+          "detail": "segment 1 is 2.50s, minimum is 3.0s"
+        },
+        {
+          "gate": "too_short",
+          "detail": "5.50s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep043-c1",
+      "episode": 43,
+      "hook": "This man is an imposter! Arrest him!",
+      "duration_s": 17.7,
+      "segments": [
+        {
+          "start_block": 4,
+          "end_block": 18,
+          "start": "00:03.90",
+          "end": "00:21.60",
+          "start_s": 3.9,
+          "end_s": 21.6,
+          "duration_s": 17.7
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "17.70s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep043-c2",
+      "episode": 43,
+      "hook": "Lord Henry Sterling. Rupert Ashburn.",
+      "duration_s": 17.6,
+      "segments": [
+        {
+          "start_block": 48,
+          "end_block": 63,
+          "start": "01:00.00",
+          "end": "01:17.60",
+          "start_s": 60.0,
+          "end_s": 77.6,
+          "duration_s": 17.6
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "17.60s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep043-c3",
+      "episode": 43,
+      "hook": "I was told he was dead!",
+      "duration_s": 19.1,
+      "segments": [
+        {
+          "start_block": 73,
+          "end_block": 86,
+          "start": "01:33.40",
+          "end": "01:52.50",
+          "start_s": 93.4,
+          "end_s": 112.5,
+          "duration_s": 19.1
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "19.10s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep046-c1",
+      "episode": 46,
+      "hook": "\"I didn't ask this church for permission to survive, Father.\"",
+      "duration_s": 12.3,
+      "segments": [
+        {
+          "start_block": 32,
+          "end_block": 37,
+          "start": "00:58.20",
+          "end": "01:10.50",
+          "start_s": 58.2,
+          "end_s": 70.5,
+          "duration_s": 12.3
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "12.30s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep047-c3",
+      "episode": 47,
+      "hook": "Alexander gently pulls Juliana closer, his hands resting securely on her shoulders.",
+      "duration_s": 19.0,
+      "segments": [
+        {
+          "start_block": 17,
+          "end_block": 23,
+          "start": "00:35.80",
+          "end": "00:54.80",
+          "start_s": 35.8,
+          "end_s": 54.8,
+          "duration_s": 19.0
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "19.00s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep050-c1",
+      "episode": 50,
+      "hook": "Agnes stops dead in front of an open doorway, peering inside.",
+      "duration_s": 8.0,
+      "segments": [
+        {
+          "start_block": 32,
+          "end_block": 38,
+          "start": "01:10.50",
+          "end": "01:18.50",
+          "start_s": 70.5,
+          "end_s": 78.5,
+          "duration_s": 8.0
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "8.00s total, minimum is 20s"
+        }
+      ]
+    }
+  ],
+  "selection_note": "Candidates that passed every deterministic gate and were then dropped during selection. Kept under a separate key so the gate counts above stay a clean measure of the gates. All four rules are recorded: min_cliffhanger and min_score are absolute (a number against a floor), while dedup and episode_cap are relative, so each of those carries the candidate that beat it in `selection`. Together with `rejected` above, every candidate the model proposed is accounted for in exactly one place.",
+  "by_selection_rule": {
+    "episode_cap": 9,
+    "min_cliffhanger": 3,
+    "min_score": 3,
+    "dedup": 3
+  },
+  "dropped_in_selection": [
+    {
+      "id": "ep008-c1",
+      "episode": 8,
+      "hook": "\"Your hair and beard...\"",
+      "duration_s": 26.2,
+      "segments": [
+        {
+          "start_block": 22,
+          "end_block": 43,
+          "start": "00:25.00",
+          "end": "00:51.20",
+          "start_s": 25.0,
+          "end_s": 51.2,
+          "duration_s": 26.2
+        }
+      ],
+      "scores": {
+        "hook_strength": 5.0,
+        "cliffhanger": 4.5,
+        "standalone": 6.0,
+        "emotional_charge": 5.0
+      },
+      "weighted_score": 5.1,
+      "failures": [
+        {
+          "gate": "min_cliffhanger",
+          "detail": "cliffhanger 4.5 below floor 5; the brief requires an unresolved ending"
+        }
+      ],
+      "selection": {
+        "rule": "min_cliffhanger",
+        "cliffhanger": 4.5,
+        "floor": 5
+      }
+    },
+    {
+      "id": "ep016-c3",
+      "episode": 16,
+      "hook": "You fought like you've done this a hundred times.",
+      "duration_s": 20.19,
+      "segments": [
+        {
+          "start_block": 51,
+          "end_block": 62,
+          "start": "01:03.00",
+          "end": "01:23.19",
+          "start_s": 63.0,
+          "end_s": 83.19,
+          "duration_s": 20.19
+        }
+      ],
+      "scores": {
+        "hook_strength": 6.5,
+        "cliffhanger": 4.0,
+        "standalone": 6.5,
+        "emotional_charge": 5.5
+      },
+      "weighted_score": 5.6,
+      "failures": [
+        {
+          "gate": "min_cliffhanger",
+          "detail": "cliffhanger 4.0 below floor 5; the brief requires an unresolved ending"
+        }
+      ],
+      "selection": {
+        "rule": "min_cliffhanger",
+        "cliffhanger": 4.0,
+        "floor": 5
+      }
+    },
+    {
+      "id": "ep017-c3",
+      "episode": 17,
+      "hook": "I was frightened",
+      "duration_s": 59.5,
+      "segments": [
+        {
+          "start_block": 40,
+          "end_block": 74,
+          "start": "00:56.50",
+          "end": "01:56.00",
+          "start_s": 56.5,
+          "end_s": 116.0,
+          "duration_s": 59.5
+        }
+      ],
+      "scores": {
+        "hook_strength": 5.0,
+        "cliffhanger": 5.0,
+        "standalone": 5.0,
+        "emotional_charge": 6.0
+      },
+      "weighted_score": 5.15,
+      "failures": [
+        {
+          "gate": "min_score",
+          "detail": "weighted score 5.15 below floor 6.0; it cleared every gate, so this is a judgement about quality and not about legality"
+        }
+      ],
+      "selection": {
+        "rule": "min_score",
+        "weighted_score": 5.15,
+        "floor": 6.0
+      }
+    },
+    {
+      "id": "ep019-c4",
+      "episode": 19,
+      "hook": "\"You saved my son's life.\"",
+      "duration_s": 20.9,
+      "segments": [
+        {
+          "start_block": 13,
+          "end_block": 24,
+          "start": "00:20.60",
+          "end": "00:41.50",
+          "start_s": 20.6,
+          "end_s": 41.5,
+          "duration_s": 20.9
+        }
+      ],
+      "scores": {
+        "hook_strength": 5.5,
+        "cliffhanger": 3.5,
+        "standalone": 5.5,
+        "emotional_charge": 6.0
+      },
+      "weighted_score": 4.97,
+      "failures": [
+        {
+          "gate": "min_cliffhanger",
+          "detail": "cliffhanger 3.5 below floor 5; the brief requires an unresolved ending"
+        }
+      ],
+      "selection": {
+        "rule": "min_cliffhanger",
+        "cliffhanger": 3.5,
+        "floor": 5
+      }
+    },
+    {
+      "id": "ep024-c2",
+      "episode": 24,
+      "hook": "Noblewoman asks 'Who are you?' with icy condescension.",
+      "duration_s": 24.0,
+      "segments": [
+        {
+          "start_block": 5,
+          "end_block": 20,
+          "start": "00:06.80",
+          "end": "00:30.80",
+          "start_s": 6.8,
+          "end_s": 30.8,
+          "duration_s": 24.0
+        }
+      ],
+      "scores": {
+        "hook_strength": 5.5,
+        "cliffhanger": 5.5,
+        "standalone": 7.0,
+        "emotional_charge": 6.0
+      },
+      "weighted_score": 5.95,
+      "failures": [
+        {
+          "gate": "min_score",
+          "detail": "weighted score 5.95 below floor 6.0; it cleared every gate, so this is a judgement about quality and not about legality"
+        }
+      ],
+      "selection": {
+        "rule": "min_score",
+        "weighted_score": 5.95,
+        "floor": 6.0
+      }
+    },
+    {
+      "id": "ep049-c3",
+      "episode": 49,
+      "hook": "\"You took your time.\"",
+      "duration_s": 41.1,
+      "segments": [
+        {
+          "start_block": 4,
+          "end_block": 19,
+          "start": "00:05.40",
+          "end": "00:46.50",
+          "start_s": 5.4,
+          "end_s": 46.5,
+          "duration_s": 41.1
+        }
+      ],
+      "scores": {
+        "hook_strength": 6.0,
+        "cliffhanger": 6.5,
+        "standalone": 5.0,
+        "emotional_charge": 6.0
+      },
+      "weighted_score": 5.9,
+      "failures": [
+        {
+          "gate": "min_score",
+          "detail": "weighted score 5.9 below floor 6.0; it cleared every gate, so this is a judgement about quality and not about legality"
+        }
+      ],
+      "selection": {
+        "rule": "min_score",
+        "weighted_score": 5.9,
+        "floor": 6.0
+      }
+    },
+    {
+      "id": "ep042-c3",
+      "episode": 42,
+      "hook": "\"You cannot be him. Alexander died!\"",
+      "duration_s": 47.0,
+      "segments": [
+        {
+          "start_block": 20,
+          "end_block": 36,
+          "start": "00:30.50",
+          "end": "01:17.50",
+          "start_s": 30.5,
+          "end_s": 77.5,
+          "duration_s": 47.0
+        }
+      ],
+      "scores": {
+        "hook_strength": 7.0,
+        "cliffhanger": 8.0,
+        "standalone": 6.5,
+        "emotional_charge": 8.0
+      },
+      "weighted_score": 7.33,
+      "failures": [
+        {
+          "gate": "dedup",
+          "detail": "79% of its runtime is shared with ep042-c2 (threshold 70%), which ranked higher at 7.5 against 7.33. Two cuts of one beat, not two promos."
+        }
+      ],
+      "selection": {
+        "rule": "dedup",
+        "lost_to": "ep042-c2",
+        "overlap": 0.789,
+        "threshold": 0.7
+      }
+    },
+    {
+      "id": "ep014-c1",
+      "episode": 14,
+      "hook": "I found it. Now release my husband.",
+      "duration_s": 30.8,
+      "segments": [
+        {
+          "start_block": 4,
+          "end_block": 24,
+          "start": "00:07.70",
+          "end": "00:38.50",
+          "start_s": 7.7,
+          "end_s": 38.5,
+          "duration_s": 30.8
+        }
+      ],
+      "scores": {
+        "hook_strength": 7.5,
+        "cliffhanger": 6.5,
+        "standalone": 7.0,
+        "emotional_charge": 8.5
+      },
+      "weighted_score": 7.22,
+      "failures": [
+        {
+          "gate": "dedup",
+          "detail": "70% of its runtime is shared with ep014-c3 (threshold 70%), which ranked higher at 7.68 against 7.22. Two cuts of one beat, not two promos."
+        }
+      ],
+      "selection": {
+        "rule": "dedup",
+        "lost_to": "ep014-c3",
+        "overlap": 0.705,
+        "threshold": 0.7
+      }
+    },
+    {
+      "id": "ep044-c2",
+      "episode": 44,
+      "hook": "For three years, I believed the man I loved was buried somewhere across the sea.",
+      "duration_s": 29.2,
+      "segments": [
+        {
+          "start_block": 25,
+          "end_block": 46,
+          "start": "00:34.20",
+          "end": "01:03.40",
+          "start_s": 34.2,
+          "end_s": 63.4,
+          "duration_s": 29.2
+        }
+      ],
+      "scores": {
+        "hook_strength": 7.0,
+        "cliffhanger": 6.5,
+        "standalone": 6.5,
+        "emotional_charge": 7.5
+      },
+      "weighted_score": 6.8,
+      "failures": [
+        {
+          "gate": "dedup",
+          "detail": "76% of its runtime is shared with ep044-c1 (threshold 70%), which ranked higher at 7.17 against 6.8. Two cuts of one beat, not two promos."
+        }
+      ],
+      "selection": {
+        "rule": "dedup",
+        "lost_to": "ep044-c1",
+        "overlap": 0.764,
+        "threshold": 0.7
+      }
+    },
+    {
+      "id": "ep015-c3",
+      "episode": 15,
+      "hook": "The Tall Thug hoists his heavy wooden club above his head to crush the remaining herbs",
+      "duration_s": 22.4,
+      "segments": [
+        {
+          "start_block": 41,
+          "end_block": 54,
+          "start": "01:00.00",
+          "end": "01:22.40",
+          "start_s": 60.0,
+          "end_s": 82.4,
+          "duration_s": 22.4
+        }
+      ],
+      "scores": {
+        "hook_strength": 8.5,
+        "cliffhanger": 9.0,
+        "standalone": 7.0,
+        "emotional_charge": 8.5
+      },
+      "weighted_score": 8.28,
+      "failures": [
+        {
+          "gate": "episode_cap",
+          "detail": "ranked 3 within episode 15, which is capped at 2. It was outranked, not judged weak - it scored 8.28, above the 6.0 floor."
+        }
+      ],
+      "selection": {
+        "rule": "episode_cap",
+        "place_in_episode": 3,
+        "cap": 2
+      }
+    },
+    {
+      "id": "ep012-c3",
+      "episode": 12,
+      "hook": "Juliana steps firmly forward, shielding Alexander with her body.",
+      "duration_s": 41.6,
+      "segments": [
+        {
+          "start_block": 3,
+          "end_block": 31,
+          "start": "00:04.80",
+          "end": "00:46.40",
+          "start_s": 4.8,
+          "end_s": 46.4,
+          "duration_s": 41.6
+        }
+      ],
+      "scores": {
+        "hook_strength": 8.0,
+        "cliffhanger": 9.0,
+        "standalone": 7.0,
+        "emotional_charge": 8.0
+      },
+      "weighted_score": 8.05,
+      "failures": [
+        {
+          "gate": "episode_cap",
+          "detail": "ranked 3 within episode 12, which is capped at 2. It was outranked, not judged weak - it scored 8.05, above the 6.0 floor."
+        }
+      ],
+      "selection": {
+        "rule": "episode_cap",
+        "place_in_episode": 3,
+        "cap": 2
+      }
+    },
+    {
+      "id": "ep001-c3",
+      "episode": 1,
+      "hook": "Juliana drops to her knees begging her silent father for help.",
+      "duration_s": 43.3,
+      "segments": [
+        {
+          "start_block": 52,
+          "end_block": 83,
+          "start": "01:19.00",
+          "end": "02:02.30",
+          "start_s": 79.0,
+          "end_s": 122.3,
+          "duration_s": 43.3
+        }
+      ],
+      "scores": {
+        "hook_strength": 7.0,
+        "cliffhanger": 8.0,
+        "standalone": 7.0,
+        "emotional_charge": 8.5
+      },
+      "weighted_score": 7.53,
+      "failures": [
+        {
+          "gate": "episode_cap",
+          "detail": "ranked 3 within episode 1, which is capped at 2. It was outranked, not judged weak - it scored 7.53, above the 6.0 floor."
+        }
+      ],
+      "selection": {
+        "rule": "episode_cap",
+        "place_in_episode": 3,
+        "cap": 2
+      }
+    },
+    {
+      "id": "ep018-c1",
+      "episode": 18,
+      "hook": "Juliana screams Alexander's name as fire glows under her bedroom door",
+      "duration_s": 22.4,
+      "segments": [
+        {
+          "start_block": 5,
+          "end_block": 17,
+          "start": "00:06.50",
+          "end": "00:28.90",
+          "start_s": 6.5,
+          "end_s": 28.9,
+          "duration_s": 22.4
+        }
+      ],
+      "scores": {
+        "hook_strength": 9.0,
+        "cliffhanger": 6.0,
+        "standalone": 7.0,
+        "emotional_charge": 7.5
+      },
+      "weighted_score": 7.38,
+      "failures": [
+        {
+          "gate": "episode_cap",
+          "detail": "ranked 3 within episode 18, which is capped at 2. It was outranked, not judged weak - it scored 7.38, above the 6.0 floor."
+        }
+      ],
+      "selection": {
+        "rule": "episode_cap",
+        "place_in_episode": 3,
+        "cap": 2
+      }
+    },
+    {
+      "id": "ep029-c3",
+      "episode": 29,
+      "hook": "\"The magistrate will call it witchcraft.\"",
+      "duration_s": 29.7,
+      "segments": [
+        {
+          "start_block": 21,
+          "end_block": 33,
+          "start": "00:37.70",
+          "end": "00:56.50",
+          "start_s": 37.7,
+          "end_s": 56.5,
+          "duration_s": 18.8
+        },
+        {
+          "start_block": 41,
+          "end_block": 47,
+          "start": "01:07.20",
+          "end": "01:18.10",
+          "start_s": 67.2,
+          "end_s": 78.1,
+          "duration_s": 10.9
+        }
+      ],
+      "scores": {
+        "hook_strength": 7.5,
+        "cliffhanger": 7.0,
+        "standalone": 6.5,
+        "emotional_charge": 7.5
+      },
+      "weighted_score": 7.1,
+      "failures": [
+        {
+          "gate": "episode_cap",
+          "detail": "ranked 3 within episode 29, which is capped at 2. It was outranked, not judged weak - it scored 7.1, above the 6.0 floor."
+        }
+      ],
+      "selection": {
+        "rule": "episode_cap",
+        "place_in_episode": 3,
+        "cap": 2
+      }
+    },
+    {
+      "id": "ep031-c2",
+      "episode": 31,
+      "hook": "\"I became a disgrace when I refused to become cruel.\"",
+      "duration_s": 26.3,
+      "segments": [
+        {
+          "start_block": 21,
+          "end_block": 35,
+          "start": "00:39.00",
+          "end": "01:05.30",
+          "start_s": 39.0,
+          "end_s": 65.3,
+          "duration_s": 26.3
+        }
+      ],
+      "scores": {
+        "hook_strength": 8.0,
+        "cliffhanger": 5.5,
+        "standalone": 7.0,
+        "emotional_charge": 7.5
+      },
+      "weighted_score": 6.92,
+      "failures": [
+        {
+          "gate": "episode_cap",
+          "detail": "ranked 3 within episode 31, which is capped at 2. It was outranked, not judged weak - it scored 6.92, above the 6.0 floor."
+        }
+      ],
+      "selection": {
+        "rule": "episode_cap",
+        "place_in_episode": 3,
+        "cap": 2
+      }
+    },
+    {
+      "id": "ep034-c3",
+      "episode": 34,
+      "hook": "It was not a ritual!",
+      "duration_s": 53.4,
+      "segments": [
+        {
+          "start_block": 47,
+          "end_block": 86,
+          "start": "01:25.00",
+          "end": "02:18.40",
+          "start_s": 85.0,
+          "end_s": 138.4,
+          "duration_s": 53.4
+        }
+      ],
+      "scores": {
+        "hook_strength": 8.0,
+        "cliffhanger": 5.5,
+        "standalone": 7.0,
+        "emotional_charge": 7.5
+      },
+      "weighted_score": 6.92,
+      "failures": [
+        {
+          "gate": "episode_cap",
+          "detail": "ranked 3 within episode 34, which is capped at 2. It was outranked, not judged weak - it scored 6.92, above the 6.0 floor."
+        }
+      ],
+      "selection": {
+        "rule": "episode_cap",
+        "place_in_episode": 3,
+        "cap": 2
+      }
+    },
+    {
+      "id": "ep007-c3",
+      "episode": 7,
+      "hook": "\"I have enough influence to make a beggar disappear.\"",
+      "duration_s": 25.9,
+      "segments": [
+        {
+          "start_block": 31,
+          "end_block": 46,
+          "start": "01:05.60",
+          "end": "01:31.50",
+          "start_s": 65.6,
+          "end_s": 91.5,
+          "duration_s": 25.9
+        }
+      ],
+      "scores": {
+        "hook_strength": 7.5,
+        "cliffhanger": 6.5,
+        "standalone": 6.5,
+        "emotional_charge": 7.0
+      },
+      "weighted_score": 6.88,
+      "failures": [
+        {
+          "gate": "episode_cap",
+          "detail": "ranked 3 within episode 7, which is capped at 2. It was outranked, not judged weak - it scored 6.88, above the 6.0 floor."
+        }
+      ],
+      "selection": {
+        "rule": "episode_cap",
+        "place_in_episode": 3,
+        "cap": 2
+      }
+    },
+    {
+      "id": "ep027-c2",
+      "episode": 27,
+      "hook": "\"That is no ordinary band. It bears the Ashbourne crest.\"",
+      "duration_s": 57.6,
+      "segments": [
+        {
+          "start_block": 11,
+          "end_block": 43,
+          "start": "00:17.20",
+          "end": "01:14.80",
+          "start_s": 17.2,
+          "end_s": 74.8,
+          "duration_s": 57.6
+        }
+      ],
+      "scores": {
+        "hook_strength": 7.0,
+        "cliffhanger": 7.0,
+        "standalone": 5.5,
+        "emotional_charge": 7.0
+      },
+      "weighted_score": 6.62,
+      "failures": [
+        {
+          "gate": "episode_cap",
+          "detail": "ranked 3 within episode 27, which is capped at 2. It was outranked, not judged weak - it scored 6.62, above the 6.0 floor."
+        }
+      ],
+      "selection": {
+        "rule": "episode_cap",
+        "place_in_episode": 3,
+        "cap": 2
+      }
+    }
+  ]
+}

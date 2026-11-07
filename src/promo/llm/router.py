@@ -75,21 +75,44 @@ def load_settings(path: Path | str = DEFAULT_SETTINGS_PATH) -> dict[str, Any]:
 
 def _build_provider(name: str, cfg: dict[str, Any]) -> Provider:
     """Construct a provider from its settings.yaml block."""
+    # Providers are grouped by what they cost to run, not by vendor:
+    #   llm/free/   hosted, free tier, quota-limited   - every committed output
+    #   llm/paid/   hosted, metered, stronger reasoning - the interview swap
+    #   llm/local/  ollama, no key/quota/cost, weakest  - offline capability
+    # Each import stays inside the branch, so selecting one profile never
+    # requires another's SDK to be installed.
     if name == "gemini":
-        from promo.llm.gemini import GeminiProvider
+        from promo.llm.free.gemini import GeminiProvider
 
         return GeminiProvider(api_key_env=cfg.get("api_key_env", "GEMINI_API_KEY"))
     if name == "groq":
-        from promo.llm.groq import DEFAULT_BASE_URL, GroqProvider
+        from promo.llm.free.groq import DEFAULT_BASE_URL, GroqProvider
 
         return GroqProvider(
             api_key_env=cfg.get("api_key_env", "GROQ_API_KEY"),
             base_url=cfg.get("base_url", DEFAULT_BASE_URL),
         )
     if name == "ollama":
-        from promo.llm.ollama import DEFAULT_BASE_URL, OllamaProvider
+        from promo.llm.local.ollama import DEFAULT_BASE_URL, OllamaProvider
 
         return OllamaProvider(base_url=cfg.get("base_url", DEFAULT_BASE_URL))
+    # The two paid backends. Added for this project, not borrowed. Neither is
+    # imported unless a profile actually selects it, so a free run never needs
+    # the anthropic or openai SDK installed.
+    if name == "claude":
+        from promo.llm.paid.claude import DEFAULT_EFFORT, ClaudeProvider
+
+        return ClaudeProvider(
+            api_key_env=cfg.get("api_key_env", "ANTHROPIC_API_KEY"),
+            effort=cfg.get("effort", DEFAULT_EFFORT),
+        )
+    if name == "gpt":
+        from promo.llm.paid.gpt import GPTProvider
+
+        return GPTProvider(
+            api_key_env=cfg.get("api_key_env", "OPENAI_API_KEY"),
+            base_url=cfg.get("base_url"),
+        )
     raise ProviderUnavailable(f"unknown provider {name!r} in settings.yaml")
 
 

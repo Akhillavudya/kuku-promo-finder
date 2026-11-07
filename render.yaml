@@ -1,0 +1,19 @@
+# Render blueprint: one free web service, built from the Dockerfile.
+#
+# Why Render rather than a Hugging Face Space: creating a Gradio or Docker
+# Space now requires a paid plan (PRO) - see DECISIONS.md. Render's free tier
+# still serves a public URL from a container. The tradeoff is that a free
+# service spins down when idle and the first request after that waits for a
+# cold start, which is why the Season tab reads precomputed JSON and makes no
+# model call: once the page is up, nothing else can be slow.
+services:
+  - type: web
+    name: promo-finder
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    envVars:
+      # Set this in the Render dashboard, never in this file.
+      - key: GEMINI_API_KEY
+        sync: false

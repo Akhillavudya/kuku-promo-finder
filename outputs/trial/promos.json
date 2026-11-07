@@ -1,0 +1,581 @@
+{
+  "summary": {
+    "profile": "profile free [free]  candidates=gemini:gemini-3.5-flash-lite  rank=gemini:gemini-3.5-flash-lite",
+    "paid": false,
+    "finished_at": "2026-11-07 18:18:57",
+    "elapsed_s": 129.1,
+    "n_episodes": 8,
+    "n_candidates_proposed": 24,
+    "n_passed_gates": 13,
+    "n_rejected_by_gates": 11,
+    "n_unscored": 0,
+    "n_promos": 9,
+    "rejections_by_gate": {
+      "too_short": 10,
+      "no_hook_in_3s": 1
+    },
+    "rank_passes": 2,
+    "rank_batch": 12,
+    "score_spread": {
+      "n_multi_pass": 13,
+      "median": 0.4,
+      "mean": 0.48,
+      "max": 1.05,
+      "n_over_1_point": 3,
+      "worst": [
+        {
+          "id": "ep010-c1",
+          "spread": 1.05,
+          "passes": [
+            {
+              "hook_strength": 8,
+              "cliffhanger": 6,
+              "standalone": 7,
+              "emotional_charge": 7
+            },
+            {
+              "hook_strength": 6,
+              "cliffhanger": 5,
+              "standalone": 7,
+              "emotional_charge": 6
+            }
+          ]
+        },
+        {
+          "id": "ep010-c3",
+          "spread": 1.0,
+          "passes": [
+            {
+              "hook_strength": 6,
+              "cliffhanger": 9,
+              "standalone": 7,
+              "emotional_charge": 8
+            },
+            {
+              "hook_strength": 6,
+              "cliffhanger": 7,
+              "standalone": 6,
+              "emotional_charge": 7
+            }
+          ]
+        },
+        {
+          "id": "ep034-c3",
+          "spread": 1.0,
+          "passes": [
+            {
+              "hook_strength": 9,
+              "cliffhanger": 6,
+              "standalone": 8,
+              "emotional_charge": 8
+            },
+            {
+              "hook_strength": 8,
+              "cliffhanger": 5,
+              "standalone": 7,
+              "emotional_charge": 7
+            }
+          ]
+        }
+      ]
+    },
+    "n_dropped_in_selection": 4,
+    "selection_drops_by_rule": {
+      "episode_cap": 2,
+      "min_cliffhanger": 1,
+      "dedup": 1
+    },
+    "episodes_with_no_promo": [
+      4,
+      13,
+      21
+    ],
+    "n_episodes_with_no_promo": 3,
+    "episode_call_failures": [],
+    "duration_repairs": 4,
+    "hook_types": {
+      "accusation": 2,
+      "defiance": 1,
+      "violence": 1,
+      "humiliation": 1,
+      "intrusion": 1,
+      "threat": 1,
+      "romance": 1,
+      "reveal": 1
+    },
+    "n_hooks_unlabelled": 0,
+    "n_axes_missing": 0,
+    "candidates_with_a_missing_axis": [],
+    "spend": {
+      "calls": 368,
+      "cached_calls": 170,
+      "by_model": {
+        "gemini-3.5-flash-lite": {
+          "tokens_in": 949084.0,
+          "tokens_out": 131258.0,
+          "usd": 0.0
+        },
+        "gemini-3.5-flash": {
+          "tokens_in": 13797.0,
+          "tokens_out": 1802.0,
+          "usd": 0.0
+        }
+      },
+      "usd_total": 0.0
+    },
+    "rubric": {
+      "weights": {
+        "hook_strength": 0.3,
+        "cliffhanger": 0.3,
+        "standalone": 0.25,
+        "emotional_charge": 0.15
+      },
+      "min_score": 6.0,
+      "min_cliffhanger": 5,
+      "max_promos_per_episode": 2
+    }
+  },
+  "promos": [
+    {
+      "id": "ep042-c2",
+      "episode": 42,
+      "duration_s": 59.6,
+      "episode_duration_s": 77.8,
+      "segments": [
+        {
+          "start_block": 8,
+          "end_block": 36,
+          "start": "00:17.90",
+          "end": "01:17.50",
+          "start_s": 17.9,
+          "end_s": 77.5,
+          "duration_s": 59.6
+        }
+      ],
+      "hook": "\"Guards! Arrest this imposter!\"",
+      "hook_type": "accusation",
+      "cliffhanger": "How will Rupert and the usurpers be punished now that the true Duke has claimed his birthright?",
+      "why": "The public declaration of the true Duke leaves the usurper completely cornered and terrified.",
+      "weakness": "The action pauses for extended dialogue, slowing down the pacing near the middle.",
+      "needs_to_know": "Rupert has been ruling illegitimately while claiming Alexander died.",
+      "scores": {
+        "hook_strength": 9.5,
+        "cliffhanger": 9.0,
+        "standalone": 8.0,
+        "emotional_charge": 9.0
+      },
+      "weighted_score": 8.9,
+      "score_passes": [
+        {
+          "hook_strength": 9,
+          "cliffhanger": 9,
+          "standalone": 8,
+          "emotional_charge": 9
+        },
+        {
+          "hook_strength": 10,
+          "cliffhanger": 9,
+          "standalone": 8,
+          "emotional_charge": 9
+        }
+      ],
+      "missing_axes": [],
+      "score_spread": 0.3,
+      "hook_block": 9,
+      "hook_offset_s": 0.1,
+      "duration_adjustment": null
+    },
+    {
+      "id": "ep018-c2",
+      "episode": 18,
+      "duration_s": 21.5,
+      "episode_duration_s": 192.0,
+      "segments": [
+        {
+          "start_block": 38,
+          "end_block": 48,
+          "start": "01:08.00",
+          "end": "01:29.50",
+          "start_s": 68.0,
+          "end_s": 89.5,
+          "duration_s": 21.5
+        }
+      ],
+      "hook": "Juliana breaks away from Alexander to run back into the burning room",
+      "hook_type": "defiance",
+      "cliffhanger": "Will Alexander be able to save her from the collapsing ceiling beam?",
+      "why": "Charging back into a burning room for a mother's ledger creates intense, breathless dread.",
+      "weakness": "Requires understanding that the ledger holds vital, irreplaceable value to her identity.",
+      "needs_to_know": "The ledger belonged to her mother.",
+      "scores": {
+        "hook_strength": 9.0,
+        "cliffhanger": 7.5,
+        "standalone": 8.0,
+        "emotional_charge": 9.0
+      },
+      "weighted_score": 8.3,
+      "score_passes": [
+        {
+          "hook_strength": 9,
+          "cliffhanger": 7,
+          "standalone": 8,
+          "emotional_charge": 9
+        },
+        {
+          "hook_strength": 9,
+          "cliffhanger": 8,
+          "standalone": 8,
+          "emotional_charge": 9
+        }
+      ],
+      "missing_axes": [],
+      "score_spread": 0.3,
+      "hook_block": 38,
+      "hook_offset_s": 0.0,
+      "duration_adjustment": null
+    },
+    {
+      "id": "ep018-c3",
+      "episode": 18,
+      "duration_s": 54.0,
+      "episode_duration_s": 192.0,
+      "segments": [
+        {
+          "start_block": 59,
+          "end_block": 76,
+          "start": "01:51.50",
+          "end": "02:45.50",
+          "start_s": 111.5,
+          "end_s": 165.5,
+          "duration_s": 54.0
+        }
+      ],
+      "hook": "Alexander smashes through a glass window, carrying Juliana out of the inferno",
+      "hook_type": "violence",
+      "cliffhanger": "How will Alexander track down the ruthless arsonists who destroyed their home?",
+      "why": "The transition from a devastating loss of their home to Alexander's cold, lethal vow for revenge delivers a massive emotional punch.",
+      "weakness": "It runs a bit long, allowing the initial shock of the fire to settle before the final vow.",
+      "needs_to_know": "Their cottage was deliberately burned down in the night.",
+      "scores": {
+        "hook_strength": 9.0,
+        "cliffhanger": 8.0,
+        "standalone": 7.5,
+        "emotional_charge": 8.5
+      },
+      "weighted_score": 8.25,
+      "score_passes": [
+        {
+          "hook_strength": 9,
+          "cliffhanger": 8,
+          "standalone": 8,
+          "emotional_charge": 9
+        },
+        {
+          "hook_strength": 9,
+          "cliffhanger": 8,
+          "standalone": 7,
+          "emotional_charge": 8
+        }
+      ],
+      "missing_axes": [],
+      "score_spread": 0.4,
+      "hook_block": 59,
+      "hook_offset_s": 0.0,
+      "duration_adjustment": "trimmed final segment from block 77 to 76 (65.7s -> 54.0s)"
+    },
+    {
+      "id": "ep034-c2",
+      "episode": 34,
+      "duration_s": 58.9,
+      "episode_duration_s": 190.0,
+      "segments": [
+        {
+          "start_block": 1,
+          "end_block": 35,
+          "start": "00:01.20",
+          "end": "01:00.10",
+          "start_s": 1.2,
+          "end_s": 60.1,
+          "duration_s": 58.9
+        }
+      ],
+      "hook": "Lady Juliana Ashcroft, you are accused of witchcraft, unlawful healing, and poisoning.",
+      "hook_type": "accusation",
+      "cliffhanger": "Her own coerced maid breaks down and testifies against her under pressure.",
+      "why": "The coercion of the former maid creates a deeply painful moment of betrayal under pressure.",
+      "weakness": "The cut lands right as the testimony begins, making it more of an introduction than a climax.",
+      "needs_to_know": "Juliana is on trial in a rigged courtroom with false witnesses.",
+      "scores": {
+        "hook_strength": 8.0,
+        "cliffhanger": 8.5,
+        "standalone": 8.0,
+        "emotional_charge": 8.5
+      },
+      "weighted_score": 8.22,
+      "score_passes": [
+        {
+          "hook_strength": 8,
+          "cliffhanger": 8,
+          "standalone": 8,
+          "emotional_charge": 8
+        },
+        {
+          "hook_strength": 8,
+          "cliffhanger": 9,
+          "standalone": 8,
+          "emotional_charge": 9
+        }
+      ],
+      "missing_axes": [],
+      "score_spread": 0.45,
+      "hook_block": 1,
+      "hook_offset_s": 0.0,
+      "duration_adjustment": "trimmed final segment from block 44 to 35 (79.3s -> 58.9s)"
+    },
+    {
+      "id": "ep002-c1",
+      "episode": 2,
+      "duration_s": 27.4,
+      "episode_duration_s": 110.0,
+      "segments": [
+        {
+          "start_block": 1,
+          "end_block": 18,
+          "start": "00:00.00",
+          "end": "00:27.40",
+          "start_s": 0.0,
+          "end_s": 27.4,
+          "duration_s": 27.4
+        }
+      ],
+      "hook": "\"I cannot marry you, Juliana.\"",
+      "hook_type": "humiliation",
+      "cliffhanger": "Does her own father defend her against the public humiliation?",
+      "why": "The cold betrayal hits immediately with Gerald's brutal rejection at the altar, making the emotional stakes instantly painful and clear.",
+      "weakness": "The dialogue wraps up its immediate exchange rather than cutting right at the peak of the confrontation.",
+      "needs_to_know": "Gerald is leaving Juliana at the altar for her sister, Clarissa.",
+      "scores": {
+        "hook_strength": 9.0,
+        "cliffhanger": 7.0,
+        "standalone": 8.5,
+        "emotional_charge": 8.5
+      },
+      "weighted_score": 8.2,
+      "score_passes": [
+        {
+          "hook_strength": 9,
+          "cliffhanger": 7,
+          "standalone": 9,
+          "emotional_charge": 9
+        },
+        {
+          "hook_strength": 9,
+          "cliffhanger": 7,
+          "standalone": 8,
+          "emotional_charge": 8
+        }
+      ],
+      "missing_axes": [],
+      "score_spread": 0.4,
+      "hook_block": 1,
+      "hook_offset_s": 0.0,
+      "duration_adjustment": null
+    },
+    {
+      "id": "ep042-c1",
+      "episode": 42,
+      "duration_s": 53.0,
+      "episode_duration_s": 77.8,
+      "segments": [
+        {
+          "start_block": 1,
+          "end_block": 29,
+          "start": "00:01.00",
+          "end": "00:54.00",
+          "start_s": 1.0,
+          "end_s": 54.0,
+          "duration_s": 53.0
+        }
+      ],
+      "hook": "Alexander strides deliberately through the pulverized cathedral doorway.",
+      "hook_type": "intrusion",
+      "cliffhanger": "Will Alexander exact his vengeance on Rupert for stealing his title and life?",
+      "why": "Alexander's commanding entrance into the usurper's wedding completely flips the power dynamic in one stride.",
+      "weakness": "The emotional reunion with his mother softens the vengeful edge just as the clip ends.",
+      "needs_to_know": "Rupert has usurped Alexander's title and is marrying into nobility while Alexander was believed dead.",
+      "scores": {
+        "hook_strength": 9.0,
+        "cliffhanger": 6.5,
+        "standalone": 8.0,
+        "emotional_charge": 9.0
+      },
+      "weighted_score": 8.0,
+      "score_passes": [
+        {
+          "hook_strength": 9,
+          "cliffhanger": 6,
+          "standalone": 8,
+          "emotional_charge": 9
+        },
+        {
+          "hook_strength": 9,
+          "cliffhanger": 7,
+          "standalone": 8,
+          "emotional_charge": 9
+        }
+      ],
+      "missing_axes": [],
+      "score_spread": 0.3,
+      "hook_block": 1,
+      "hook_offset_s": 0.0,
+      "duration_adjustment": "trimmed final segment from block 36 to 29 (76.5s -> 53.0s)"
+    },
+    {
+      "id": "ep034-c1",
+      "episode": 34,
+      "duration_s": 31.4,
+      "episode_duration_s": 190.0,
+      "segments": [
+        {
+          "start_block": 89,
+          "end_block": 105,
+          "start": "02:22.20",
+          "end": "02:53.60",
+          "start_s": 142.2,
+          "end_s": 173.6,
+          "duration_s": 31.4
+        }
+      ],
+      "hook": "Lady Juliana, if you wish to save yourself, renounce these practices.",
+      "hook_type": "threat",
+      "cliffhanger": "The judge begins reading the final sentence as she refuses to back down.",
+      "why": "Juliana's flat refusal to renounce her healing practice in a rigged court establishes her proud defiance instantly.",
+      "weakness": "The dramatic weight relies heavily on accepting the premise of a medieval witchcraft trial.",
+      "needs_to_know": "Lady Juliana is on trial for witchcraft because she used herbal medicine to heal people.",
+      "scores": {
+        "hook_strength": 8.0,
+        "cliffhanger": 7.5,
+        "standalone": 8.0,
+        "emotional_charge": 8.5
+      },
+      "weighted_score": 7.93,
+      "score_passes": [
+        {
+          "hook_strength": 9,
+          "cliffhanger": 7,
+          "standalone": 8,
+          "emotional_charge": 9
+        },
+        {
+          "hook_strength": 7,
+          "cliffhanger": 8,
+          "standalone": 8,
+          "emotional_charge": 8
+        }
+      ],
+      "missing_axes": [],
+      "score_spread": 0.45,
+      "hook_block": 90,
+      "hook_offset_s": 0.2,
+      "duration_adjustment": null
+    },
+    {
+      "id": "ep010-c3",
+      "episode": 10,
+      "duration_s": 22.0,
+      "episode_duration_s": 94.0,
+      "segments": [
+        {
+          "start_block": 47,
+          "end_block": 58,
+          "start": "01:03.90",
+          "end": "01:25.90",
+          "start_s": 63.9,
+          "end_s": 85.9,
+          "duration_s": 22.0
+        }
+      ],
+      "hook": "\"Why do you look at me like that?\"",
+      "hook_type": "romance",
+      "cliffhanger": "How Juliana reacts when he takes her hands and confesses his feelings.",
+      "why": "The tension peaks right as Alexander touches her hands and delivers a deeply vulnerable confession.",
+      "weakness": "The opening lines are a bit soft to grab a scrolling stranger within the first second.",
+      "needs_to_know": "They have a shared past of suffering that draws them together.",
+      "scores": {
+        "hook_strength": 6.0,
+        "cliffhanger": 8.0,
+        "standalone": 6.5,
+        "emotional_charge": 7.5
+      },
+      "weighted_score": 6.95,
+      "score_passes": [
+        {
+          "hook_strength": 6,
+          "cliffhanger": 9,
+          "standalone": 7,
+          "emotional_charge": 8
+        },
+        {
+          "hook_strength": 6,
+          "cliffhanger": 7,
+          "standalone": 6,
+          "emotional_charge": 7
+        }
+      ],
+      "missing_axes": [],
+      "score_spread": 1.0,
+      "hook_block": 47,
+      "hook_offset_s": 0.0,
+      "duration_adjustment": null
+    },
+    {
+      "id": "ep010-c1",
+      "episode": 10,
+      "duration_s": 52.5,
+      "episode_duration_s": 94.0,
+      "segments": [
+        {
+          "start_block": 6,
+          "end_block": 46,
+          "start": "00:05.10",
+          "end": "00:57.60",
+          "start_s": 5.1,
+          "end_s": 57.6,
+          "duration_s": 52.5
+        }
+      ],
+      "hook": "Alexander arrives bleeding heavily at the isolated cottage.",
+      "hook_type": "reveal",
+      "cliffhanger": "Whether they will finally give in to their intense, unspoken feelings.",
+      "why": "Alexander's stubborn refusal to show weakness contrasts sharply with Juliana's fierce care, building quiet intimacy.",
+      "weakness": "It functions more as a slow-burn character moment than a high-octane ad hook.",
+      "needs_to_know": "Alexander is a scarred veteran hiding his deep pain from Juliana.",
+      "scores": {
+        "hook_strength": 7.0,
+        "cliffhanger": 5.5,
+        "standalone": 7.0,
+        "emotional_charge": 6.5
+      },
+      "weighted_score": 6.47,
+      "score_passes": [
+        {
+          "hook_strength": 8,
+          "cliffhanger": 6,
+          "standalone": 7,
+          "emotional_charge": 7
+        },
+        {
+          "hook_strength": 6,
+          "cliffhanger": 5,
+          "standalone": 7,
+          "emotional_charge": 6
+        }
+      ],
+      "missing_axes": [],
+      "score_spread": 1.05,
+      "hook_block": 6,
+      "hook_offset_s": 0.0,
+      "duration_adjustment": "trimmed final segment from block 58 to 46 (80.8s -> 52.5s)"
+    }
+  ]
+}

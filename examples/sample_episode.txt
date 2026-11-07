@@ -1,0 +1,93 @@
+EPISODE NUMBER: 99
+EPISODE LOGLINE: A debt collector arrives at a failing bakery to seize it, and recognises the woman behind the counter as the sister he was told had died.
+CONTINUITY NOTES: Nothing. This file is a synthetic stand-in written for the demo - no episode of the real pack is reproduced here. It exists so the live tab can be driven by anyone, including someone who does not have the screenplays.
+
+SCENE 1
+Scene heading: INT. A SHUTTERED BAKERY - BEFORE DAWN
+
+**CAMERA:**
+Start: (00:00.00) | End: (00:05.40)
+Cold hold on a steel shutter half down. Flour hangs in the one bar of streetlight that gets under it. Push in slowly until the dark takes the frame.
+
+**ACTION:**
+Start: (00:00.60) | End: (00:04.10)
+A hand slides an eviction notice under the shutter. It stops against a woman's shoe.
+
+**NADIA (Flat, unsurprised):**
+Start: (00:04.30) | End: (00:07.80)
+"Third one this month. You people don't knock."
+
+**CAMERA:**
+Start: (00:07.90) | End: (00:12.60)
+Reverse to a man crouched on the wet pavement outside, suit soaked through, holding a clipboard like a shield.
+
+**ARJUN (Carefully, rehearsed):**
+Start: (00:08.20) | End: (00:13.40)
+"Ma'am, I have an order. You have until six to clear the premises."
+
+**NADIA (Rising, hard):**
+Start: (00:13.60) | End: (00:18.20)
+"Then come in and take it. Look me in the face while you do it."
+
+**ACTION:**
+Start: (00:18.40) | End: (00:23.10)
+The shutter screams up. She stands in the doorway with a bread knife in one hand, not raised - forgotten.
+
+SCENE 2
+Scene heading: INT. THE BAKERY FLOOR - CONTINUOUS
+
+**CAMERA:**
+Start: (00:23.20) | End: (00:29.80)
+He straightens into the light. His face goes slack. The clipboard tilts and the pages go loose in the wind.
+
+**ARJUN (Barely audible):**
+Start: (00:29.90) | End: (00:33.40)
+"...Nadia?"
+
+**ACTION:**
+Start: (00:33.60) | End: (00:38.90)
+She does not move. The knife finally comes up an inch, then stops, as if the name has pinned her wrist.
+
+**NADIA (Whispered, disbelieving):**
+Start: (00:39.10) | End: (00:44.60)
+"They buried you. I carried the box. I carried it."
+
+**ARJUN (Breaking):**
+Start: (00:44.80) | End: (00:50.20)
+"They buried somebody. It wasn't me."
+
+**CAMERA:**
+Start: (00:50.30) | End: (00:56.70)
+Hold on the two of them, the width of a counter apart, neither closing it. Behind him the street starts to wake.
+
+**ACTION:**
+Start: (00:56.90) | End: (01:02.40)
+He puts the eviction order face down on the counter and slides it towards her, slowly, like something that might go off.
+
+**ARJUN (Quiet, urgent):**
+Start: (01:02.60) | End: (01:08.80)
+"Whoever sent me here knew you were alive. Read the name at the bottom."
+
+**ACTION:**
+Start: (01:09.00) | End: (01:13.60)
+She turns the page over. Her face empties.
+
+**NADIA (Numb):**
+Start: (01:13.80) | End: (01:18.40)
+"This is mother's signature."
+
+**CAMERA:**
+Start: (01:18.50) | End: (01:24.90)
+Snap to the shutter rolling down on its own behind him, cutting the street light off a stripe at a time.
+
+**SOUND FX:**
+Start: (01:24.00) | End: (01:26.20)
+A single bolt throwing home somewhere out of frame.
+
+**ARJUN (Flat, cold):**
+Start: (01:26.40) | End: (01:31.00)
+"Then she knows I've found you. Nadia - we have about four minutes."
+
+**ACTION:**
+Start: (01:31.20) | End: (01:36.80)
+Headlights fill the shop. Two sets. They do not turn off.

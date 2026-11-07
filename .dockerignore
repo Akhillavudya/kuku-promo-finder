@@ -1,0 +1,24 @@
+# The screenplays and the brief never enter an image. D8, and hard rule 5:
+# pack/ and brief/ are never committed and never deployed.
+pack/
+brief/
+
+# Secrets and local state.
+.env
+.venv/
+llm.log
+.llm_cache/
+
+# Build and tooling noise.
+web/node_modules/
+web/dist/
+**/__pycache__/
+*.pyc
+.git/
+.github/
+.pytest_cache/
+tests/
+eval/labels.json
+notes/
+*.md
+!README.md

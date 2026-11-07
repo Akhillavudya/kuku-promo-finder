@@ -1,0 +1,2434 @@
+/* The whole stylesheet. One file, no framework, no build step beyond Vite.
+ *
+ * Design brief: a cutting-room console, not a SaaS analytics page. The person
+ * this is for picks which 30 seconds of a two-minute melodrama goes out as an
+ * ad, so the vernacular is broadcast: timecodes in a monospace face, hairline
+ * dividers instead of drop shadows, and the episode strip as the one element
+ * allowed to be loud.
+ *
+ * Two rules hold the colour system together:
+ *
+ *   1. Saturated colour means data. The four axis hues below are the rubric's
+ *      four axes and nothing else is allowed to use them. Chrome - selection,
+ *      focus, hover, primary buttons - gets exactly one hue, a blue, chosen
+ *      because blue is the gap in the axis palette and so can never be
+ *      mistaken for a measurement.
+ *   2. Nothing is signalled by colour alone. Every bar carries its number,
+ *      every segment its ordinal, every gate result its own words.
+ *
+ * Contrast is WCAG 2.2 AA or better throughout: --ink on --canvas is ~16:1,
+ * --ink-3 ~5.3:1, --ink-4 ~4.6:1 on the lightest panel it is ever used on.
+ *
+ * Mobile-first in behaviour if not in source order: nothing scrolls
+ * horizontally at 320px, every interactive target is at least 44px once touch
+ * is likely, focus is always visible, and the only motion is on hover and
+ * selection, which prefers-reduced-motion removes.
+ */
+
+:root {
+  /* canvas and panels - graphite with a faint violet cast, not tinted black */
+  --canvas: #14131a;
+  --panel: #1c1b24;
+  --panel-2: #24222e;
+  --panel-3: #2e2b3a;
+  --rule: #332f41;
+  --rule-soft: #282531;
+
+  /* ink */
+  --ink: #f0eef5;
+  --ink-2: #c5c0d4;
+  --ink-3: #9a94ac;
+  --ink-4: #948ea9;
+
+  /* chrome signal - interactive state only, never data */
+  --signal: #6f94f5;
+  --signal-soft: #85a4f7;
+  --signal-dim: #252c4a;
+  --signal-on: #0c1020;
+
+  /* the four rubric axes. Nothing else may use these. */
+  --ax-hook: #f0b429;
+  --ax-cliff: #f2748f;
+  --ax-stand: #54c7b8;
+  --ax-charge: #a78bda;
+
+  /* status */
+  --ok: #5fd3a3;
+  --caution: #d9a85c;
+  --bad: #f2748f;
+
+  /* the light of exposed film: what a selected span is made of */
+  --film-hi: #efecf6;
+  --film-lo: #cdc7dd;
+  --film-ink: #211f2b;
+
+  /* type */
+  --sans: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
+  --serif: "IBM Plex Serif", Georgia, "Times New Roman", serif;
+
+  --t-11: 0.6875rem;
+  --t-12: 0.75rem;
+  --t-13: 0.8125rem;
+  --t-15: 0.9375rem;
+  --t-17: 1.0625rem;
+  --t-20: 1.25rem;
+  --t-24: 1.5rem;
+
+  /* space */
+  --s1: 4px;
+  --s2: 8px;
+  --s3: 12px;
+  --s4: 16px;
+  --s5: 20px;
+  --s6: 24px;
+  --s7: 32px;
+  --s8: 40px;
+  --s9: 56px;
+
+  /* radii, varied by hierarchy on purpose - a box, a panel, a chip and a bar
+   * are four different kinds of thing and should not share one curve */
+  --r-box: 12px;
+  --r-panel: 10px;
+  --r-ctl: 7px;
+  --r-chip: 5px;
+  --r-bar: 2px;
+
+  --rail-w: 272px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* --- icons and waiting states ------------------------------------------- */
+
+/* Every icon in the app. Sized here, not on the <svg>, so a control scales
+ * its icon with its own type. See components/Icon.tsx for the rest. */
+.pf-i {
+  flex: none;
+  width: 1em;
+  height: 1em;
+  display: block;
+}
+
+/* A number that has not arrived. Replaced the em dash that used to stand in
+ * for one: this cannot be mistaken for a glyph that failed to load. */
+.pf-skel {
+  display: inline-block;
+  width: 26px;
+  height: 9px;
+  vertical-align: baseline;
+  border-radius: var(--r-bar);
+  background: var(--panel-3);
+}
+
+.pf-skel-lg {
+  width: 38px;
+  height: 14px;
+}
+
+/* The one spinner. 1em so it sits in a button's text box exactly as an icon
+ * would, and removed entirely under prefers-reduced-motion, where the
+ * button's own "Finding promos" label is the status. */
+.pf-spin {
+  flex: none;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  animation: pf-rotate 650ms linear infinite;
+}
+
+@keyframes pf-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Timecodes and measurements. Tabular so a column of them does not wobble. */
+.pf-tc {
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+  font-size: var(--t-12);
+  color: var(--ink-2);
+}
+
+.pf-tc-dim {
+  color: var(--ink-3);
+}
+
+.pf-tc-lg {
+  font-size: var(--t-17);
+  color: var(--ink);
+}
+
+/* --- shell -------------------------------------------------------------- */
+
+.pf-app {
+  display: grid;
+  grid-template-columns: var(--rail-w) minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+/* --- the rail ----------------------------------------------------------- */
+
+/* One scroll container, not two. The episode list used to live in here and
+ * made the rail taller than any viewport; with it behind a dropdown the rail
+ * fits, and this `overflow-y` only ever engages below about 620px tall. */
+.pf-rail {
+  position: sticky;
+  top: 0;
+  align-self: start;
+  height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  background: var(--panel);
+  border-right: 1px solid var(--rule);
+}
+
+.pf-rail-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.pf-rail-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+  padding: var(--s5);
+  border-bottom: 1px solid var(--rule);
+}
+
+/* The mark is the episode strip in miniature: a dim track, one bright span. */
+.pf-mark {
+  flex: none;
+  width: 30px;
+  height: 30px;
+  border-radius: var(--r-ctl);
+  background: var(--panel-3);
+  border: 1px solid var(--rule);
+  display: grid;
+  place-items: center;
+}
+
+.pf-mark-track {
+  position: relative;
+  display: block;
+  width: 18px;
+  height: 9px;
+  border-radius: var(--r-bar);
+  background: var(--canvas);
+}
+
+.pf-mark-seg {
+  position: absolute;
+  left: 3px;
+  top: 1px;
+  bottom: 1px;
+  width: 7px;
+  border-radius: 1px;
+  background: linear-gradient(180deg, var(--film-hi), var(--film-lo));
+}
+
+.pf-brand-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.pf-brand-name {
+  font-size: var(--t-15);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.pf-brand-sub {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: var(--t-11);
+  color: var(--ink-3);
+}
+
+/* The arrow was `&rarr;`, which inherits the text face and so shifts weight
+ * and baseline with it. As a path it is 1em and always centred. */
+.pf-brand-sub .pf-i {
+  width: 11px;
+  height: 11px;
+  color: var(--ink-4);
+}
+
+.pf-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--s3);
+  border-bottom: 1px solid var(--rule);
+}
+
+.pf-nav-item {
+  appearance: none;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: var(--ink-2);
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1px;
+  min-height: 44px;
+  padding: 8px 11px;
+  border-radius: var(--r-ctl);
+  transition: background-color 120ms ease, color 120ms ease;
+}
+
+.pf-nav-item:hover {
+  background: var(--panel-2);
+  color: var(--ink);
+}
+
+.pf-nav-item.is-on {
+  background: var(--signal-dim);
+  color: var(--ink);
+  box-shadow: inset 2px 0 0 var(--signal);
+}
+
+.pf-nav-label {
+  font-size: var(--t-13);
+  font-weight: 500;
+}
+
+.pf-nav-hint {
+  font-size: var(--t-11);
+  color: var(--ink-3);
+}
+
+.pf-nav-item.is-on .pf-nav-hint {
+  color: var(--ink-2);
+}
+
+.pf-rail-group {
+  padding: var(--s4) var(--s5);
+  border-bottom: 1px solid var(--rule);
+}
+
+.pf-rail-grouphead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s2);
+}
+
+.pf-rail-h {
+  margin: 0 0 var(--s3);
+  font-size: var(--t-11);
+  font-weight: 600;
+  color: var(--ink-4);
+}
+
+.pf-railstats {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.pf-railstat {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s3);
+}
+
+.pf-railstat dt {
+  font-size: var(--t-12);
+  color: var(--ink-3);
+}
+
+.pf-railstat dd {
+  margin: 0;
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+  font-size: var(--t-13);
+  color: var(--ink);
+}
+
+/* --- the episode picker ------------------------------------------------- */
+
+.pf-pick {
+  position: relative;
+}
+
+.pf-pick-btn {
+  width: 100%;
+  appearance: none;
+  font: inherit;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  min-height: 46px;
+  padding: 7px 9px 7px 11px;
+  background: var(--panel-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-ctl);
+  transition: background-color 120ms ease, border-color 120ms ease;
+}
+
+.pf-pick-btn:hover:not(:disabled) {
+  background: var(--panel-3);
+  border-color: var(--ink-4);
+}
+
+.pf-pick-btn.is-open {
+  border-color: var(--signal);
+  background: var(--signal-dim);
+}
+
+.pf-pick-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.pf-pick-btn-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.pf-pick-btn-label {
+  font-size: var(--t-13);
+  font-weight: 500;
+}
+
+.pf-pick-btn-sub {
+  font-size: var(--t-11);
+  color: var(--ink-3);
+}
+
+.pf-pick-caret {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  font-size: 14px;
+  color: var(--ink-3);
+  transition: transform 140ms ease, color 140ms ease;
+}
+
+.pf-pick-caret[data-open="true"] {
+  transform: rotate(180deg);
+  color: var(--ink);
+}
+
+/* Fixed, not absolute: the rail is a scroll container and would clip an
+ * absolute panel at 224px wide - too narrow for the three columns that keep
+ * 51 cells to about one screen. EpisodePicker.tsx measures the button and
+ * sets top/left/width inline. */
+.pf-pick-menu {
+  position: fixed;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  max-height: min(62vh, 620px);
+  background: var(--panel-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-panel);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 12px 32px rgb(0 0 0 / 0.45);
+  overflow: hidden;
+}
+
+.pf-pick-search {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  padding: var(--s2) var(--s3);
+  border-bottom: 1px solid var(--rule);
+}
+
+.pf-pick-search-i {
+  flex: none;
+  display: grid;
+  place-items: center;
+  font-size: 15px;
+  color: var(--ink-3);
+}
+
+.pf-pick-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  appearance: none;
+  font: inherit;
+  font-size: var(--t-13);
+  color: var(--ink);
+  background: none;
+  border: 0;
+  padding: 7px 0;
+}
+
+.pf-pick-input::placeholder {
+  color: var(--ink-4);
+}
+
+.pf-pick-input:focus {
+  outline: none;
+}
+
+/* The focus ring belongs to the whole field, since the input has no border
+ * of its own. */
+.pf-pick-search:focus-within {
+  background: var(--panel-3);
+}
+
+.pf-pick-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  padding: var(--s2);
+}
+
+.pf-pick-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(128px, 1fr));
+  gap: 2px;
+}
+
+.pf-ep-all {
+  margin-bottom: var(--s2);
+  padding-bottom: var(--s2);
+  border-bottom: 1px solid var(--rule-soft);
+  border-radius: 6px 6px 0 0;
+}
+
+.pf-pick-empty,
+.pf-pick-foot {
+  margin: 0;
+  font-size: var(--t-11);
+  line-height: 1.5;
+  color: var(--ink-4);
+}
+
+.pf-pick-empty {
+  padding: var(--s3) var(--s2);
+}
+
+.pf-pick-foot {
+  flex: none;
+  padding: var(--s2) var(--s3);
+  border-top: 1px solid var(--rule);
+  background: var(--panel);
+}
+
+.pf-pick-foot strong {
+  color: var(--ink-3);
+  font-weight: 500;
+}
+
+.pf-ep {
+  width: 100%;
+  appearance: none;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: var(--ink-2);
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 34px;
+  padding: 5px 7px;
+  border-radius: 6px;
+  transition: background-color 120ms ease, color 120ms ease;
+}
+
+/* The selected cell is marked twice: this tick, and the tint below. Colour
+ * alone never carries a meaning in this interface (stylesheet rule 2), and
+ * "which episode am I filtered to" is a meaning. */
+.pf-ep-tick {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 14px;
+  height: 14px;
+  font-size: 13px;
+  color: var(--signal);
+}
+
+.pf-ep:hover {
+  background: var(--panel-2);
+  color: var(--ink);
+}
+
+.pf-ep.is-on {
+  background: var(--signal-dim);
+  color: var(--ink);
+  box-shadow: inset 2px 0 0 var(--signal);
+}
+
+.pf-ep.is-none {
+  color: var(--ink-4);
+}
+
+.pf-ep-name {
+  flex: 1 1 auto;
+  font-size: var(--t-12);
+}
+
+.pf-ep-n {
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.pf-ep-best {
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+  font-size: var(--t-11);
+  color: var(--ink-3);
+}
+
+.pf-ep-count {
+  flex: none;
+  min-width: 19px;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: var(--t-11);
+  padding: 1px 0;
+  border-radius: 4px;
+  background: var(--panel-3);
+  color: var(--ink-2);
+}
+
+.pf-ep-none {
+  font-size: var(--t-11);
+  color: var(--ink-4);
+}
+
+/* --- live runs kept in the rail ----------------------------------------- */
+
+.pf-runs {
+  list-style: none;
+  margin: var(--s2) 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+/* The row and its delete button are siblings, not nested buttons: a button
+ * inside a button is invalid HTML and the inner one is unreachable. */
+.pf-run {
+  display: flex;
+  align-items: stretch;
+  gap: 2px;
+}
+
+.pf-run-open {
+  flex: 1 1 auto;
+  min-width: 0;
+  appearance: none;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: var(--ink-2);
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1px;
+  min-height: 42px;
+  padding: 5px 9px;
+  border-radius: 6px;
+  transition: background-color 120ms ease, color 120ms ease;
+}
+
+.pf-run-open:hover {
+  background: var(--panel-2);
+  color: var(--ink);
+}
+
+.pf-run-open.is-on {
+  background: var(--signal-dim);
+  color: var(--ink);
+  box-shadow: inset 2px 0 0 var(--signal);
+}
+
+.pf-run-name {
+  font-size: var(--t-12);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pf-run-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+  font-size: var(--t-11);
+  color: var(--ink-4);
+}
+
+.pf-run-at {
+  flex: none;
+}
+
+.pf-run-tally {
+  color: var(--ink-3);
+}
+
+.pf-run-failed {
+  color: var(--bad);
+}
+
+/* Revealed on hover or focus, but never only on hover: it is in the tab
+ * order at all times and focus-visible brings it back. */
+.pf-run-del {
+  flex: none;
+  align-self: center;
+  opacity: 0;
+  transition: opacity 120ms ease, background-color 120ms ease;
+}
+
+.pf-run:hover .pf-run-del,
+.pf-run-del:focus-visible {
+  opacity: 1;
+}
+
+@media (hover: none) {
+  .pf-run-del {
+    opacity: 1;
+  }
+}
+
+.pf-rail-foot {
+  margin-top: auto;
+  padding: var(--s4) var(--s5) var(--s5);
+  border-top: 1px solid var(--rule);
+}
+
+.pf-profile {
+  margin: 0 0 var(--s2);
+  font-family: var(--mono);
+  font-size: var(--t-11);
+  line-height: 1.5;
+  color: var(--ink-3);
+  overflow-wrap: anywhere;
+}
+
+.pf-rail-note {
+  margin: 0;
+  font-size: var(--t-11);
+  line-height: 1.5;
+  color: var(--ink-4);
+}
+
+/* --- workspace ---------------------------------------------------------- */
+
+.pf-work {
+  min-width: 0;
+}
+
+.pf-workbar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--s4);
+  padding: var(--s5) var(--s7);
+  background: rgba(20, 19, 26, 0.92);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--rule);
+}
+
+.pf-worktitle {
+  margin: 0;
+  font-size: var(--t-20);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.pf-workblurb {
+  margin: 2px 0 0;
+  font-size: var(--t-12);
+  color: var(--ink-3);
+  max-width: 62ch;
+}
+
+.pf-workbody {
+  padding: var(--s6) var(--s7) var(--s9);
+  max-width: 1240px;
+}
+
+/* --- run summary tiles -------------------------------------------------- */
+
+.pf-summary {
+  margin-bottom: var(--s6);
+}
+
+/* 1px gaps over a rule-coloured background give hairline dividers without a
+ * single shadow. */
+.pf-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(132px, 1fr));
+  gap: 1px;
+  margin-bottom: var(--s5);
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-panel);
+  overflow: hidden;
+}
+
+.pf-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--s4);
+  background: var(--panel);
+}
+
+/* The unflattering four. Set apart by surface, not by colour, so they read as
+ * a group without borrowing a hue that means something else. */
+.pf-tile.is-caution {
+  background: var(--panel-2);
+}
+
+.pf-tile-v {
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+  font-size: var(--t-24);
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+.pf-tile-l {
+  font-size: var(--t-12);
+  color: var(--ink-2);
+}
+
+.pf-tile-h {
+  font-size: var(--t-11);
+  color: var(--ink-4);
+}
+
+.pf-gatechart {
+  padding: var(--s5);
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-box);
+}
+
+.pf-panel-h {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin: 0 0 var(--s4);
+  font-size: var(--t-15);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.pf-panel-sub {
+  font-size: var(--t-12);
+  font-weight: 400;
+  color: var(--ink-3);
+}
+
+.pf-gatebars {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s3);
+}
+
+.pf-gatebar {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr) 42px;
+  align-items: center;
+  gap: var(--s3);
+}
+
+.pf-gatebar-name {
+  font-family: var(--mono);
+  font-size: var(--t-12);
+  color: var(--ink-2);
+}
+
+/* One measure across three categories, so one hue - a sequential scale, not
+ * a categorical one. */
+.pf-gatebar-track {
+  height: 8px;
+  border-radius: var(--r-bar);
+  background: var(--panel-3);
+  overflow: hidden;
+}
+
+.pf-gatebar-fill {
+  display: block;
+  height: 100%;
+  border-radius: var(--r-bar);
+  background: var(--ink-3);
+}
+
+.pf-gatebar-n {
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+  font-size: var(--t-13);
+  text-align: right;
+  color: var(--ink);
+}
+
+/* --- toolbar ------------------------------------------------------------ */
+
+.pf-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--s4);
+  margin-bottom: var(--s5);
+  padding-bottom: var(--s3);
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+.pf-toolbar-count {
+  margin: 0;
+  font-size: var(--t-13);
+  color: var(--ink-2);
+}
+
+.pf-toolbar-count strong {
+  font-family: var(--mono);
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.pf-toolbar-controls {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--s4);
+}
+
+.pf-check {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  min-height: 44px;
+  font-size: var(--t-12);
+  color: var(--ink-2);
+  cursor: pointer;
+}
+
+.pf-check input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--signal);
+}
+
+/* --- episode box -------------------------------------------------------- */
+
+.pf-epbox {
+  margin-bottom: var(--s6);
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-box);
+  overflow: hidden;
+}
+
+/* An episode that kept nothing is a result, not a gap. Dashed and unfilled
+ * says "deliberately empty" where a missing box would say nothing at all. */
+.pf-epbox.is-declined {
+  background: transparent;
+  border-style: dashed;
+  border-color: var(--rule-soft);
+}
+
+.pf-epbox-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s4);
+  padding: var(--s3) var(--s5);
+  background: var(--panel-2);
+  border-bottom: 1px solid var(--rule);
+}
+
+.pf-epbox.is-declined .pf-epbox-head {
+  background: transparent;
+  border-bottom-color: var(--rule-soft);
+}
+
+.pf-epbox-id {
+  margin: 0;
+  font-size: var(--t-13);
+  font-weight: 500;
+  color: var(--ink-3);
+}
+
+.pf-epbox-n {
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+  font-size: var(--t-17);
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.pf-epbox-meta {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s4);
+}
+
+.pf-epbox-tally {
+  font-size: var(--t-12);
+  color: var(--ink-3);
+}
+
+.pf-epbox-zero {
+  color: var(--ink-4);
+}
+
+.pf-epbox-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s5);
+  padding: var(--s5);
+}
+
+.pf-epbox-why {
+  margin: 0;
+  font-size: var(--t-13);
+  line-height: 1.6;
+  color: var(--ink-3);
+  max-width: 72ch;
+}
+
+.pf-also {
+  padding-top: var(--s2);
+  border-top: 1px solid var(--rule-soft);
+}
+
+/* --- one promo ---------------------------------------------------------- */
+
+.pf-promo + .pf-promo {
+  padding-top: var(--s5);
+  border-top: 1px solid var(--rule-soft);
+}
+
+.pf-promo-head {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--s3);
+  margin-bottom: var(--s4);
+}
+
+.pf-rank {
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+  font-size: var(--t-13);
+  padding: 3px 8px;
+  border-radius: var(--r-chip);
+  background: var(--panel-3);
+  border: 1px solid var(--rule);
+  color: var(--ink-2);
+}
+
+.pf-rank.is-top {
+  background: var(--signal-dim);
+  border-color: var(--signal);
+  color: var(--ink);
+}
+
+.pf-promo-dur {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s2);
+}
+
+.pf-promo-segs {
+  font-size: var(--t-12);
+  color: var(--ink-3);
+}
+
+.pf-promo-score {
+  margin-left: auto;
+  display: flex;
+  align-items: baseline;
+  gap: var(--s2);
+}
+
+.pf-score-v {
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+  font-size: var(--t-24);
+  font-weight: 500;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.pf-spread {
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+  font-size: var(--t-12);
+  color: var(--ink-3);
+}
+
+/* --- the episode strip: the one loud element ---------------------------- */
+
+.pf-strip {
+  margin-bottom: var(--s5);
+}
+
+.pf-strip-track {
+  position: relative;
+  height: 46px;
+  border-radius: 4px;
+  background: var(--panel-3);
+  border: 1px solid var(--rule);
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.055) 0 1px,
+    transparent 1px 10%
+  );
+}
+
+/* A kept span, in the light of exposed film. */
+.pf-strip-seg {
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  min-width: 3px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, var(--film-hi) 0%, var(--film-lo) 100%);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.pf-strip-segn {
+  font-family: var(--mono);
+  font-size: var(--t-11);
+  font-weight: 500;
+  color: var(--film-ink);
+}
+
+/* The hook gate's own window, at true scale: 3 seconds of a 138-second
+ * episode is 2% of this track, and that is the point. */
+.pf-strip-gate {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  min-width: 3px;
+  z-index: 2;
+  border-left: 1px solid var(--ax-hook);
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(240, 180, 41, 0.6) 0 2px,
+    rgba(240, 180, 41, 0) 2px 5px
+  );
+}
+
+/* The block that satisfied the gate, at its measured offset. */
+.pf-strip-caret {
+  position: absolute;
+  top: -5px;
+  bottom: -5px;
+  width: 2px;
+  z-index: 3;
+  background: var(--ax-hook);
+}
+
+.pf-strip-caret-head {
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid var(--ax-hook);
+}
+
+.pf-strip-rail {
+  position: relative;
+  height: 6px;
+  margin-top: var(--s2);
+}
+
+.pf-strip-tick {
+  position: absolute;
+  top: 0;
+  width: 1px;
+  height: 5px;
+  background: var(--rule);
+}
+
+.pf-strip-legend {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--s3);
+}
+
+.pf-strip-ranges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--s3);
+}
+
+.pf-strip-range {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pf-strip-dash {
+  width: 10px;
+  height: 1px;
+  background: var(--ink-4);
+}
+
+/* --- the writing, and the measurement, side by side -------------------- */
+
+.pf-promo-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 296px;
+  gap: var(--s6);
+}
+
+.pf-lines {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s4);
+  max-width: 68ch;
+}
+
+.pf-line-h {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  margin: 0 0 var(--s1);
+  font-size: var(--t-12);
+  font-weight: 600;
+  color: var(--ink-3);
+}
+
+.pf-line-h-weak {
+  color: var(--caution);
+}
+
+/* The hook is a line someone says on screen, so it is set as a quotation.
+ * Amber because amber is the hook axis - the colour is the same claim. */
+.pf-quote {
+  margin: 0;
+  padding-left: var(--s4);
+  border-left: 2px solid var(--ax-hook);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: var(--t-20);
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+.pf-line-b {
+  margin: 0;
+  font-size: var(--t-15);
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+
+.pf-tag {
+  font-family: var(--mono);
+  font-size: var(--t-11);
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: var(--panel-3);
+  border: 1px solid var(--rule);
+  color: var(--ink-3);
+  font-weight: 400;
+}
+
+.pf-promo-side {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s4);
+  min-width: 0;
+}
+
+/* --- rubric axes -------------------------------------------------------- */
+
+.pf-axes {
+  padding: var(--s4);
+  background: var(--panel-2);
+  border: 1px solid var(--rule-soft);
+  border-radius: var(--r-panel);
+}
+
+.pf-axes-h {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s2);
+  margin: 0 0 var(--s3);
+  font-size: var(--t-12);
+  font-weight: 600;
+  color: var(--ink-3);
+}
+
+.pf-axes-passes {
+  font-size: var(--t-11);
+  font-weight: 400;
+  color: var(--ink-4);
+}
+
+.pf-axis {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "label value"
+    "bar bar";
+  align-items: center;
+  gap: 3px var(--s2);
+  margin-bottom: var(--s3);
+}
+
+.pf-axis:last-of-type {
+  margin-bottom: 0;
+}
+
+.pf-axis-l {
+  grid-area: label;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font-size: var(--t-12);
+  color: var(--ink-2);
+}
+
+.pf-axis-w {
+  font-family: var(--mono);
+  font-size: var(--t-11);
+  color: var(--ink-4);
+}
+
+.pf-axis-v {
+  grid-area: value;
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+  font-size: var(--t-13);
+  color: var(--ink);
+}
+
+.pf-axis-v.is-missing {
+  color: var(--bad);
+}
+
+.pf-axis-bar {
+  grid-area: bar;
+  height: 6px;
+  border-radius: var(--r-bar);
+  background: var(--panel-3);
+  overflow: hidden;
+}
+
+.pf-axis-fill {
+  display: block;
+  height: 100%;
+  border-radius: var(--r-bar);
+}
+
+.pf-axes-note {
+  margin: var(--s3) 0 0;
+  font-size: var(--t-11);
+  line-height: 1.5;
+  color: var(--caution);
+}
+
+/* --- gate evidence ------------------------------------------------------ */
+
+.pf-gate {
+  padding: var(--s4);
+  background: var(--panel-2);
+  border: 1px solid var(--rule-soft);
+  border-radius: var(--r-panel);
+}
+
+.pf-gate-h {
+  margin: 0 0 var(--s3);
+  font-size: var(--t-12);
+  font-weight: 600;
+  color: var(--ink-3);
+}
+
+.pf-gate-line {
+  display: flex;
+  gap: var(--s2);
+  margin: 0 0 var(--s2);
+  font-size: var(--t-12);
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.pf-gate-line:last-child {
+  margin-bottom: 0;
+}
+
+.pf-gate-flag {
+  flex: none;
+}
+
+.pf-gate-ok .pf-gate-flag {
+  color: var(--ok);
+}
+
+.pf-gate-bad .pf-gate-flag {
+  color: var(--bad);
+}
+
+.pf-gate-warn .pf-gate-flag {
+  color: var(--caution);
+}
+
+/* --- rejections --------------------------------------------------------- */
+
+.pf-disclosure {
+  appearance: none;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: var(--t-13);
+  color: var(--ink-2);
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  min-height: 44px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.pf-disclosure:hover {
+  color: var(--ink);
+}
+
+/* Was a literal `+` / `-` in the monospace face. A chevron that rotates
+ * says the same thing without depending on a glyph, and the rotation makes
+ * open and closed one state rather than two characters to compare. */
+.pf-disclosure-mark {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  color: var(--ink-3);
+  background: var(--panel-2);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  transition: transform 140ms ease, color 140ms ease;
+}
+
+.pf-disclosure-mark[data-open="true"] {
+  transform: rotate(90deg);
+  color: var(--ink);
+}
+
+.pf-disclosure:hover .pf-disclosure-mark {
+  color: var(--ink);
+  border-color: var(--ink-4);
+}
+
+.pf-rejects {
+  list-style: none;
+  margin: var(--s3) 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s3);
+}
+
+.pf-reject {
+  padding: var(--s3) var(--s4);
+  background: var(--panel-2);
+  border: 1px solid var(--rule-soft);
+  border-left: 2px solid var(--rule);
+  border-radius: var(--r-panel);
+}
+
+/* A scored candidate that still lost is the arguable kind. Marked apart from
+ * a gate rejection, which involved no opinion at all. */
+.pf-reject.is-selection {
+  border-left-color: var(--caution);
+}
+
+.pf-reject-head {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--s3);
+}
+
+.pf-reject-id {
+  font-family: var(--mono);
+  font-size: var(--t-11);
+  color: var(--ink-3);
+}
+
+.pf-reject-score {
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+  font-size: var(--t-12);
+  color: var(--ink);
+}
+
+.pf-reject-kind {
+  margin-left: auto;
+  font-size: var(--t-11);
+  color: var(--ink-3);
+}
+
+.pf-reject-kind.is-selection {
+  color: var(--caution);
+}
+
+.pf-reject-hook {
+  margin: var(--s2) 0 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: var(--t-13);
+  color: var(--ink-2);
+}
+
+.pf-reject-fails {
+  list-style: none;
+  margin: var(--s2) 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.pf-reject-fails li {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--s2);
+}
+
+.pf-reject-gate {
+  font-family: var(--mono);
+  font-size: var(--t-11);
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: var(--panel-3);
+  color: var(--ink-2);
+}
+
+.pf-reject-detail {
+  font-size: var(--t-12);
+  color: var(--ink-3);
+}
+
+/* --- panels and prose (method, live) ----------------------------------- */
+
+.pf-panel {
+  padding: var(--s5);
+  margin-bottom: var(--s5);
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-box);
+}
+
+.pf-panel:last-child {
+  margin-bottom: 0;
+}
+
+.pf-prose {
+  max-width: 82ch;
+}
+
+.pf-prose p {
+  margin: 0 0 var(--s4);
+  max-width: 68ch;
+  font-size: var(--t-15);
+  line-height: 1.65;
+  color: var(--ink-2);
+}
+
+.pf-prose p:last-child {
+  margin-bottom: 0;
+}
+
+.pf-prose strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.pf-prose .pf-panel-h {
+  font-size: var(--t-17);
+}
+
+.pf-prose .pf-panel-foot {
+  font-size: var(--t-13);
+  color: var(--ink-3);
+}
+
+/* The limits panel is the one thing on this page a reader must not skim past
+ * without noticing. An edge, not a colour wash. */
+.pf-panel-limit {
+  border-left: 3px solid var(--caution);
+}
+
+.pf-split {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  margin: var(--s4) 0;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-panel);
+  overflow: hidden;
+}
+
+.pf-split-col {
+  padding: var(--s4);
+  background: var(--panel-2);
+}
+
+.pf-split-col-py {
+  background: var(--panel);
+}
+
+.pf-split-h {
+  margin: 0 0 var(--s3);
+  font-size: var(--t-12);
+  font-weight: 600;
+  color: var(--ink-3);
+}
+
+.pf-split-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s3);
+}
+
+.pf-split-list li {
+  position: relative;
+  padding-left: var(--s4);
+  font-size: var(--t-13);
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+
+.pf-split-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 7px;
+  height: 1px;
+  background: var(--ink-4);
+}
+
+.pf-weaklist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s4);
+}
+
+.pf-weaklist li {
+  padding-left: var(--s4);
+  border-left: 2px solid var(--rule);
+  font-size: var(--t-15);
+  line-height: 1.6;
+  color: var(--ink-2);
+  max-width: 68ch;
+}
+
+.pf-weaklist strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* --- fields and buttons ------------------------------------------------- */
+
+.pf-field {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+}
+
+.pf-field-block {
+  flex-direction: column;
+  align-items: stretch;
+  margin-bottom: var(--s4);
+}
+
+.pf-label {
+  font-size: var(--t-12);
+  color: var(--ink-3);
+}
+
+.pf-select,
+.pf-btn,
+.pf-textarea {
+  font: inherit;
+  color: var(--ink);
+  background: var(--panel-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-ctl);
+}
+
+.pf-select {
+  min-height: 44px;
+  padding: 10px;
+  font-size: var(--t-13);
+}
+
+/* One button, three weights: primary (one per view), default, and quiet for
+ * a destructive-ish action like clearing the panel. Each is a flex row so an
+ * icon and a label sit on the same optical centre line - the icon is 1em and
+ * inherits colour, so nothing has to be re-tuned per variant. */
+.pf-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 42px;
+  padding: 9px 14px;
+  font-size: var(--t-13);
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 120ms ease, border-color 120ms ease,
+    color 120ms ease, transform 60ms ease;
+}
+
+.pf-btn .pf-i {
+  font-size: 15px;
+  opacity: 0.85;
+}
+
+.pf-btn:hover:not(:disabled) {
+  background: var(--panel-3);
+  border-color: var(--ink-4);
+}
+
+/* A press should be felt. 1px, which reads as weight rather than as motion,
+ * and prefers-reduced-motion drops the transition but keeps the offset. */
+.pf-btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.pf-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pf-btn-primary {
+  background: var(--signal);
+  border-color: var(--signal);
+  color: var(--signal-on);
+  font-weight: 600;
+}
+
+.pf-btn-primary .pf-i {
+  opacity: 1;
+}
+
+.pf-btn-primary:hover:not(:disabled) {
+  background: var(--signal-soft);
+  border-color: var(--signal-soft);
+}
+
+.pf-btn-quiet {
+  background: none;
+  border-color: transparent;
+  color: var(--ink-3);
+}
+
+.pf-btn-quiet:hover:not(:disabled) {
+  background: var(--panel-2);
+  border-color: var(--rule);
+  color: var(--ink);
+}
+
+/* An icon with no label: a 32px square hit area inside a 44px-tall row, used
+ * only where the row itself already names the thing being acted on. Every
+ * one of these carries an aria-label. */
+.pf-iconbtn {
+  appearance: none;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  flex: none;
+  padding: 0;
+  font-size: 15px;
+  color: var(--ink-3);
+  background: none;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 120ms ease, color 120ms ease;
+}
+
+.pf-iconbtn:hover {
+  background: var(--panel-3);
+  color: var(--ink);
+}
+
+/* A label that acts as a control without pretending to be a box. Used for
+ * "Clear" beside a group heading, where a bordered button would outweigh the
+ * heading it sits next to. */
+.pf-textbtn {
+  appearance: none;
+  border: 0;
+  background: none;
+  padding: 2px 4px;
+  margin: -2px -4px;
+  font: inherit;
+  font-size: var(--t-11);
+  color: var(--ink-3);
+  cursor: pointer;
+  border-radius: 4px;
+  transition: color 120ms ease, background-color 120ms ease;
+}
+
+.pf-textbtn:hover {
+  color: var(--ink);
+  background: var(--panel-2);
+}
+
+.pf-textarea {
+  width: 100%;
+  min-height: 220px;
+  padding: var(--s3);
+  font-family: var(--mono);
+  font-size: var(--t-12);
+  line-height: 1.6;
+  resize: vertical;
+}
+
+.pf-controls {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--s3);
+}
+
+.pf-hint {
+  font-family: var(--mono);
+  font-size: var(--t-12);
+  color: var(--ink-3);
+}
+
+/* --- notices ------------------------------------------------------------ */
+
+.pf-notice {
+  margin: 0 0 var(--s4);
+  padding: var(--s4);
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--signal);
+  border-radius: var(--r-panel);
+  font-size: var(--t-13);
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+
+.pf-notice-warn {
+  border-left-color: var(--caution);
+}
+
+.pf-notice-error {
+  border-left-color: var(--bad);
+}
+
+.pf-notice code,
+.pf-panel code {
+  font-family: var(--mono);
+  font-size: 0.92em;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: var(--panel-3);
+  color: var(--ink);
+}
+
+.pf-notice strong {
+  color: var(--ink);
+}
+
+.pf-empty {
+  margin: var(--s3) 0 0;
+  font-size: var(--t-13);
+  color: var(--ink-3);
+}
+
+/* --- the rail becomes a header bar ------------------------------------- */
+
+/* --- the model badge in the rail foot ----------------------------------
+ *
+ * The slot a product would fill with an account row and an Upgrade button.
+ * What belongs there in this app is the thing a reader is about to spend on:
+ * which model a live run calls, and whether it is free. The Free/Paid/Local
+ * tag is derived server-side from the chosen profile's providers, so it can
+ * never disagree with what actually runs.
+ *
+ * Status colour, not data colour (stylesheet rule 1): --ok and --caution are
+ * the status pair and the four axis hues are untouched, and the tag always
+ * carries its own word, so colour is never the only signal (rule 2).
+ */
+
+.pf-account {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  margin-bottom: var(--s3);
+}
+
+.pf-avatar {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  flex: none;
+  font-size: 15px;
+  color: var(--ink-3);
+  background: var(--panel-2);
+  border: 1px solid var(--rule);
+  border-radius: 50%;
+}
+
+.pf-avatar[data-cost="paid"] {
+  color: var(--caution);
+}
+
+.pf-account-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+
+.pf-account-name {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: var(--t-11);
+  line-height: 1.4;
+  color: var(--ink-2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pf-account-sub {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.pf-account-key {
+  font-size: var(--t-11);
+  color: var(--ink-4);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pf-tag[data-cost="free"] {
+  color: var(--ok);
+}
+
+.pf-tag[data-cost="paid"] {
+  color: var(--caution);
+}
+
+/* A fourth button weight, and the only one: small, round, used once, in the
+ * foot where a full-height button would outweigh the row it sits in. */
+.pf-btn-pill {
+  min-height: 32px;
+  flex: none;
+  padding: 5px 11px;
+  font-size: var(--t-11);
+  border-radius: 999px;
+}
+
+.pf-btn-pill .pf-i {
+  font-size: 13px;
+}
+
+/* The one place the model is named inside the Run live controls, so the
+ * question "what is about to answer this?" is answered beside the button
+ * that spends the quota, not only in the rail. */
+.pf-runmodel {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  padding: 4px 10px;
+  font: inherit;
+  font-family: var(--mono);
+  font-size: var(--t-11);
+  color: var(--ink-3);
+  background: none;
+  border: 1px dashed var(--rule);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: color 120ms ease, border-color 120ms ease, background-color 120ms ease;
+}
+
+.pf-runmodel:hover {
+  color: var(--ink);
+  background: var(--panel-2);
+  border-color: var(--ink-4);
+}
+
+/* --- the settings dialog ------------------------------------------------ */
+
+.pf-modal-wrap {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: var(--s4);
+  overflow: auto;
+  background: rgba(8, 7, 12, 0.68);
+}
+
+.pf-modal {
+  display: flex;
+  flex-direction: column;
+  width: min(540px, 100%);
+  max-height: min(86vh, 780px);
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-box);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.55);
+}
+
+.pf-modal-head {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s3);
+  padding: var(--s5) var(--s5) var(--s3);
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+.pf-modal-title {
+  margin: 0;
+  font-size: var(--t-17);
+  font-weight: 600;
+}
+
+.pf-modal-sub {
+  margin: 4px 0 0;
+  font-size: var(--t-12);
+  line-height: 1.5;
+  color: var(--ink-3);
+}
+
+.pf-modal-head .pf-iconbtn {
+  margin-left: auto;
+}
+
+.pf-modal-body {
+  padding: var(--s5);
+  overflow-y: auto;
+}
+
+.pf-modal-foot {
+  display: flex;
+  gap: var(--s2);
+  padding: var(--s3) var(--s5) var(--s5);
+  border-top: 1px solid var(--rule-soft);
+}
+
+.pf-modal-note {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  font-size: var(--t-12);
+  color: var(--ink-3);
+}
+
+.pf-modal-empty {
+  margin: 0;
+  font-size: var(--t-13);
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+
+.pf-fieldset {
+  margin: 0 0 var(--s5);
+  padding: 0;
+  border: 0;
+}
+
+.pf-legend {
+  padding: 0;
+  margin-bottom: var(--s2);
+  font-size: var(--t-12);
+  color: var(--ink-3);
+}
+
+.pf-choices {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* A radio row, not a card grid: five options differing in one dimension read
+ * faster stacked, and the native input keeps arrow-key navigation and the
+ * grouping a screen reader announces. */
+.pf-choice {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s3);
+  min-height: 44px;
+  padding: 10px var(--s3);
+  background: var(--panel-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-ctl);
+  cursor: pointer;
+  transition: background-color 120ms ease, border-color 120ms ease;
+}
+
+.pf-choice:hover {
+  background: var(--panel-3);
+}
+
+.pf-choice.is-on {
+  background: var(--signal-dim);
+  border-color: var(--signal);
+}
+
+/* The input sits inside the label, so focus lands on it and the ring has to
+ * be drawn on the row for the option to look focused rather than the dot. */
+.pf-choice:focus-within {
+  outline: 2px solid var(--signal);
+  outline-offset: 2px;
+}
+
+.pf-choice-radio {
+  width: 16px;
+  height: 16px;
+  margin: 3px 0 0;
+  flex: none;
+  accent-color: var(--signal);
+}
+
+.pf-choice-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.pf-choice-top {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+}
+
+/* The profile's own name out of the YAML, in the mono face because that is
+ * what it is: a config key. Title-casing it would print `gpt` as "Gpt". */
+.pf-choice-name {
+  font-family: var(--mono);
+  font-size: var(--t-13);
+  font-weight: 600;
+}
+
+.pf-choice-models {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.pf-choice-tier {
+  font-size: var(--t-11);
+  line-height: 1.5;
+  color: var(--ink-3);
+  overflow-wrap: anywhere;
+}
+
+.pf-choice-tier code {
+  font-family: var(--mono);
+  color: var(--ink-2);
+}
+
+/* type="password", so the face has to be the mono one for the dots to sit
+ * evenly; the placeholder reverts to the sans, because it is prose. */
+.pf-input {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  font: inherit;
+  font-family: var(--mono);
+  font-size: var(--t-13);
+  color: var(--ink);
+  background: var(--panel-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-ctl);
+}
+
+.pf-input::placeholder {
+  font-family: var(--sans);
+  color: var(--ink-4);
+}
+
+.pf-keysaved {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  flex-wrap: wrap;
+}
+
+/* A saved key is shown masked and never re-rendered in full: the real value
+ * in a field would sit in the DOM of a page someone screen-shares. */
+.pf-keymask {
+  padding: 9px 11px;
+  font-family: var(--mono);
+  font-size: var(--t-12);
+  color: var(--ink-2);
+  background: var(--panel-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-ctl);
+}
+
+.pf-help {
+  margin: 6px 0 0;
+  font-size: var(--t-11);
+  line-height: 1.55;
+  color: var(--ink-4);
+}
+
+.pf-field-block .pf-label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 6px;
+  text-transform: capitalize;
+}
+
+/* A control that has to read as part of a sentence, inside a notice. */
+.pf-linkbtn {
+  appearance: none;
+  padding: 0;
+  font: inherit;
+  color: var(--signal);
+  background: none;
+  border: 0;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.pf-linkbtn:hover {
+  color: var(--signal-soft);
+}
+
+@media (max-width: 1080px) {
+  .pf-app {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .pf-rail {
+    position: static;
+    height: auto;
+    overflow: visible;
+    border-right: 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .pf-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .pf-nav-item {
+    flex: 1 1 170px;
+  }
+
+  .pf-railstats {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--s5);
+  }
+
+  .pf-railstat {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+
+  /* Two groups side by side instead of stacked, now that the episode list
+   * is a dropdown and no group is taller than its own content. */
+  .pf-rail-scroll {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+
+  .pf-rail-scroll > .pf-nav {
+    grid-column: 1 / -1;
+  }
+
+  /* Touch is likely here, so a picker cell grows to a real tap target. */
+  .pf-ep,
+  .pf-run-open {
+    min-height: 44px;
+  }
+
+  .pf-rail-foot {
+    margin-top: 0;
+  }
+
+  .pf-workbar,
+  .pf-workbody {
+    padding-left: var(--s5);
+    padding-right: var(--s5);
+  }
+
+  .pf-promo-body {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s5);
+  }
+
+  .pf-promo-side {
+    max-width: 520px;
+  }
+}
+
+@media (max-width: 720px) {
+  .pf-split {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 620px) {
+  .pf-gatebar {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .pf-gatebar-track {
+    grid-column: 1 / -1;
+    order: 3;
+  }
+}
+
+@media (max-width: 560px) {
+  :root {
+    --t-24: 1.375rem;
+  }
+
+  .pf-rail-brand,
+  .pf-rail-group,
+  .pf-rail-foot {
+    padding-left: var(--s4);
+    padding-right: var(--s4);
+  }
+
+  .pf-workbar,
+  .pf-workbody {
+    padding-left: var(--s4);
+    padding-right: var(--s4);
+  }
+
+  .pf-epbox-body,
+  .pf-epbox-head,
+  .pf-panel,
+  .pf-gatechart {
+    padding-left: var(--s4);
+    padding-right: var(--s4);
+  }
+
+  .pf-promo-score {
+    margin-left: 0;
+  }
+
+  .pf-strip-ranges {
+    justify-content: flex-start;
+  }
+
+  .pf-quote {
+    font-size: var(--t-17);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* The blanket rule above stops the spinner rotating, which would leave a
+   * static ring claiming to be busy. Removed entirely instead: the button's
+   * own "Finding promos" label is the status, and it is the better one. */
+  .pf-spin {
+    display: none;
+  }
+}

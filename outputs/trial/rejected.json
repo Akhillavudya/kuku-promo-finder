@@ -1,0 +1,431 @@
+{
+  "note": "Every candidate the model proposed that a deterministic gate threw out, plus the gate and the measured number. Kept on purpose: these counts are the quality evidence.",
+  "by_gate": {
+    "too_short": 10,
+    "no_hook_in_3s": 1
+  },
+  "rejected": [
+    {
+      "id": "ep002-c3",
+      "episode": 2,
+      "hook": "\"I may leave this chapel without a husband...\"",
+      "duration_s": 11.5,
+      "segments": [
+        {
+          "start_block": 70,
+          "end_block": 73,
+          "start": "01:38.50",
+          "end": "01:50.00",
+          "start_s": 98.5,
+          "end_s": 110.0,
+          "duration_s": 11.5
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "11.50s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep004-c1",
+      "episode": 4,
+      "hook": "A penniless nobody for a discarded bride.",
+      "duration_s": 10.8,
+      "segments": [
+        {
+          "start_block": 4,
+          "end_block": 11,
+          "start": "00:03.40",
+          "end": "00:14.20",
+          "start_s": 3.4,
+          "end_s": 14.2,
+          "duration_s": 10.8
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "10.80s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep004-c2",
+      "episode": 4,
+      "hook": "You have thrown yourself away!",
+      "duration_s": 19.7,
+      "segments": [
+        {
+          "start_block": 85,
+          "end_block": 98,
+          "start": "01:54.80",
+          "end": "02:14.50",
+          "start_s": 114.8,
+          "end_s": 134.5,
+          "duration_s": 19.7
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "19.70s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep010-c2",
+      "episode": 10,
+      "hook": "Alexander removes his shirt to reveal a torso crisscrossed with brutal scars.",
+      "duration_s": 52.7,
+      "segments": [
+        {
+          "start_block": 26,
+          "end_block": 58,
+          "start": "00:33.20",
+          "end": "01:25.90",
+          "start_s": 33.2,
+          "end_s": 85.9,
+          "duration_s": 52.7
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "no_hook_in_3s",
+          "detail": "no dialogue or ACTION beat starts within 3.0s of 00:33.20; the promo opens on CAMERA"
+        }
+      ]
+    },
+    {
+      "id": "ep021-c1",
+      "episode": 21,
+      "hook": "\"Lady Juliana! Please! You have to help me, Toby is dying!\"",
+      "duration_s": 17.5,
+      "segments": [
+        {
+          "start_block": 4,
+          "end_block": 13,
+          "start": "00:04.20",
+          "end": "00:21.70",
+          "start_s": 4.2,
+          "end_s": 21.7,
+          "duration_s": 17.5
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "17.50s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep021-c2",
+      "episode": 21,
+      "hook": "\"At the grand manor, they ignore us. They only care about their own luxury.\"",
+      "duration_s": 17.4,
+      "segments": [
+        {
+          "start_block": 63,
+          "end_block": 72,
+          "start": "01:31.00",
+          "end": "01:48.40",
+          "start_s": 91.0,
+          "end_s": 108.4,
+          "duration_s": 17.4
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "17.40s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep021-c3",
+      "episode": 21,
+      "hook": "\"Lady Juliana! Please! You have to help me, Toby is dying!\"",
+      "duration_s": 17.5,
+      "segments": [
+        {
+          "start_block": 4,
+          "end_block": 9,
+          "start": "00:04.20",
+          "end": "00:15.00",
+          "start_s": 4.2,
+          "end_s": 15.0,
+          "duration_s": 10.8
+        },
+        {
+          "start_block": 11,
+          "end_block": 13,
+          "start": "00:15.00",
+          "end": "00:21.70",
+          "start_s": 15.0,
+          "end_s": 21.7,
+          "duration_s": 6.7
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "17.50s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep021-c4",
+      "episode": 21,
+      "hook": "Lady Juliana turns sharply, her eyes widening with sudden recognition.",
+      "duration_s": 11.9,
+      "segments": [
+        {
+          "start_block": 65,
+          "end_block": 72,
+          "start": "01:36.50",
+          "end": "01:48.40",
+          "start_s": 96.5,
+          "end_s": 108.4,
+          "duration_s": 11.9
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "11.90s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep013-c1",
+      "episode": 13,
+      "hook": "Sharp blackthorn spines rake across Juliana's fingers and knuckles, carving bloody gashes across her skin.",
+      "duration_s": 13.0,
+      "segments": [
+        {
+          "start_block": 35,
+          "end_block": 43,
+          "start": "00:54.00",
+          "end": "01:07.00",
+          "start_s": 54.0,
+          "end_s": 67.0,
+          "duration_s": 13.0
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "13.00s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep013-c2",
+      "episode": 13,
+      "hook": "Juliana gets snagged between two vicious thorns, tearing her sleeve and flesh, screaming in pain.",
+      "duration_s": 16.0,
+      "segments": [
+        {
+          "start_block": 50,
+          "end_block": 61,
+          "start": "01:18.00",
+          "end": "01:34.00",
+          "start_s": 78.0,
+          "end_s": 94.0,
+          "duration_s": 16.0
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "16.00s total, minimum is 20s"
+        }
+      ]
+    },
+    {
+      "id": "ep013-c3",
+      "episode": 13,
+      "hook": "Her blood-smeared index finger brushes against a solid metallic object half-buried in the frozen dirt.",
+      "duration_s": 9.0,
+      "segments": [
+        {
+          "start_block": 66,
+          "end_block": 74,
+          "start": "01:43.00",
+          "end": "01:52.00",
+          "start_s": 103.0,
+          "end_s": 112.0,
+          "duration_s": 9.0
+        }
+      ],
+      "duration_adjustment": null,
+      "failures": [
+        {
+          "gate": "too_short",
+          "detail": "9.00s total, minimum is 20s"
+        }
+      ]
+    }
+  ],
+  "selection_note": "Candidates that passed every deterministic gate and were then dropped during selection. Kept under a separate key so the gate counts above stay a clean measure of the gates. All four rules are recorded: min_cliffhanger and min_score are absolute (a number against a floor), while dedup and episode_cap are relative, so each of those carries the candidate that beat it in `selection`. Together with `rejected` above, every candidate the model proposed is accounted for in exactly one place.",
+  "by_selection_rule": {
+    "episode_cap": 2,
+    "min_cliffhanger": 1,
+    "dedup": 1
+  },
+  "dropped_in_selection": [
+    {
+      "id": "ep002-c2",
+      "episode": 2,
+      "hook": "\"Dignity? You abandoned a woman who trusted you...\"",
+      "duration_s": 22.2,
+      "segments": [
+        {
+          "start_block": 54,
+          "end_block": 66,
+          "start": "01:14.40",
+          "end": "01:36.60",
+          "start_s": 74.4,
+          "end_s": 96.6,
+          "duration_s": 22.2
+        }
+      ],
+      "scores": {
+        "hook_strength": 8.0,
+        "cliffhanger": 3.5,
+        "standalone": 7.0,
+        "emotional_charge": 8.0
+      },
+      "weighted_score": 6.4,
+      "failures": [
+        {
+          "gate": "min_cliffhanger",
+          "detail": "cliffhanger 3.5 below floor 5; the brief requires an unresolved ending"
+        }
+      ],
+      "selection": {
+        "rule": "min_cliffhanger",
+        "cliffhanger": 3.5,
+        "floor": 5
+      }
+    },
+    {
+      "id": "ep042-c3",
+      "episode": 42,
+      "hook": "\"You cannot be him. Alexander died!\"",
+      "duration_s": 47.0,
+      "segments": [
+        {
+          "start_block": 20,
+          "end_block": 36,
+          "start": "00:30.50",
+          "end": "01:17.50",
+          "start_s": 30.5,
+          "end_s": 77.5,
+          "duration_s": 47.0
+        }
+      ],
+      "scores": {
+        "hook_strength": 8.5,
+        "cliffhanger": 8.5,
+        "standalone": 8.0,
+        "emotional_charge": 9.0
+      },
+      "weighted_score": 8.45,
+      "failures": [
+        {
+          "gate": "dedup",
+          "detail": "79% of its runtime is shared with ep042-c2 (threshold 70%), which ranked higher at 8.9 against 8.45. Two cuts of one beat, not two promos."
+        }
+      ],
+      "selection": {
+        "rule": "dedup",
+        "lost_to": "ep042-c2",
+        "overlap": 0.789,
+        "threshold": 0.7
+      }
+    },
+    {
+      "id": "ep018-c1",
+      "episode": 18,
+      "hook": "Juliana screams Alexander's name as fire glows under her bedroom door",
+      "duration_s": 22.4,
+      "segments": [
+        {
+          "start_block": 5,
+          "end_block": 17,
+          "start": "00:06.50",
+          "end": "00:28.90",
+          "start_s": 6.5,
+          "end_s": 28.9,
+          "duration_s": 22.4
+        }
+      ],
+      "scores": {
+        "hook_strength": 8.5,
+        "cliffhanger": 6.0,
+        "standalone": 7.0,
+        "emotional_charge": 7.5
+      },
+      "weighted_score": 7.22,
+      "failures": [
+        {
+          "gate": "episode_cap",
+          "detail": "ranked 3 within episode 18, which is capped at 2. It was outranked, not judged weak - it scored 7.22, above the 6.0 floor."
+        }
+      ],
+      "selection": {
+        "rule": "episode_cap",
+        "place_in_episode": 3,
+        "cap": 2
+      }
+    },
+    {
+      "id": "ep034-c3",
+      "episode": 34,
+      "hook": "It was not a ritual!",
+      "duration_s": 53.4,
+      "segments": [
+        {
+          "start_block": 47,
+          "end_block": 86,
+          "start": "01:25.00",
+          "end": "02:18.40",
+          "start_s": 85.0,
+          "end_s": 138.4,
+          "duration_s": 53.4
+        }
+      ],
+      "scores": {
+        "hook_strength": 8.5,
+        "cliffhanger": 5.5,
+        "standalone": 7.5,
+        "emotional_charge": 7.5
+      },
+      "weighted_score": 7.2,
+      "failures": [
+        {
+          "gate": "episode_cap",
+          "detail": "ranked 3 within episode 34, which is capped at 2. It was outranked, not judged weak - it scored 7.2, above the 6.0 floor."
+        }
+      ],
+      "selection": {
+        "rule": "episode_cap",
+        "place_in_episode": 3,
+        "cap": 2
+      }
+    }
+  ]
+}

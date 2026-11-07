@@ -1,23 +1,113 @@
 # Kuku promo finder - LLM configuration.
 #
 # Carried over from shorts-clipper unchanged in shape, because the router
-# reads exactly these four blocks: tiers, fallback, providers, llm.
+# reads exactly these blocks: tiers, fallback, providers, llm. The `profiles`
+# block below is new - see D13.
 #
 # HARD RULE, inherited and still load-bearing: ask the router for a TIER,
 # never a model. No model string belongs anywhere in src/.
 #     router.complete("candidates", prompt, system=..., json_schema=...)
 
+# ---------------------------------------------------------------------------
+# PROFILES - the whole point of the "easy to swap" claim.
+#
+# A profile is just a named replacement for the `tiers` block. Pick one with
+# `--profile <name>`; promo/config.py copies it over `tiers` before the router
+# ever sees the settings, so the router, the pipeline and the prompts are all
+# completely unaware that profiles exist.
+#
+#   python -m promo.run                     # free, the default
+#   python -m promo.run --profile claude    # paid
+#   python -m promo.run --profile gpt       # paid
+#
+# The brief says free tiers are enough and paid tools earn no extra credit, so
+# `free` is the default and every committed output was produced with it. The
+# paid profiles exist because the brief also says stronger models may be
+# connected through APIs Kuku provides; this is what that costs to support.
+# ---------------------------------------------------------------------------
+default_profile: free
+
+profiles:
+  free:
+    # 50 cheap parallel cacheable calls, then one scoring pass. Costs nothing.
+    candidates:
+      # Pass 1, one call per episode. High volume, recall task: find every
+      # span that could work, do not be tasteful about it.
+      provider: gemini
+      model: gemini-3.5-flash-lite
+    rank:
+      # Pass 2, season-wide. Scores the shortlist on the rubric. Precision
+      # task, so it *should* be the stronger model - but it is the same one as
+      # pass 1 on purpose. Carried over from shorts-clipper's settings.yaml:
+      # gemini-3.8-flash 503s on real payloads on this account. Move this up
+      # when that stops, or use `--profile mixed` to pay for this pass only.
+      provider: gemini
+      model: gemini-3.5-flash-lite
+
+  claude:
+    # Paid. Scoring is the pass that actually needs judgement, so if only one
+    # tier is going to be expensive, make it `rank`. Both are set here because
+    # the point of the profile is a like-for-like comparison.
+    candidates:
+      provider: claude
+      model: claude-opus-5-5
+    rank:
+      provider: claude
+      model: claude-opus-5-5
+
+  gpt:
+    # Paid. Id VERIFIED 2026-11-07 at developers.openai.com/api/docs/models:
+    # gpt-6-astra is the current flagship for complex reasoning. OpenAI renames
+    # its flagship often, so re-check before spending - a stale id fails loudly
+    # as "model not found" rather than silently degrading, which is why this
+    # was only ever a risk to the wallet and never to the output.
+    candidates:
+      provider: gpt
+      model: gpt-6-astra
+    rank:
+      provider: gpt
+      model: gpt-6-astra
+
+  mixed:
+    # The shape worth arguing for in a real deployment: a free model does the
+    # 50 recall calls, a paid one does the single pass where taste matters.
+    # ~1 paid call per 50 free ones.
+    candidates:
+      provider: gemini
+      model: gemini-3.5-flash-lite
+    rank:
+      provider: claude
+      model: claude-opus-5-5
+
+  local:
+    # No key, no quota, no rate limit, no network, no cost at any volume. The
+    # only profile that runs with zero credentials, which makes it the right
+    # target for an offline demo or a CI smoke test.
+    #
+    # It is a CAPABILITY, NOT A RECOMMENDATION. At sizes that run without a
+    # GPU, scoring four rubric axes is not trustworthy - the rank tier's error
+    # bar is already +/-0.75 weighted points on a hosted model
+    # (notes/ACCURACY.md #3) and a small local model widens it. No committed
+    # output came from here.
+    #
+    # VERIFY the tag before using: `ollama list`. An id that only looks right
+    # is a guess wearing the costume of a fact - see notes/MISTAKES.md #7.
+    # Requires `ollama serve` running and `ollama pull <model>` done first;
+    # a missing daemon is a connection refused, a missing model a 404.
+    candidates:
+      provider: ollama
+      model: llama3.1:8b      # VERIFY with `ollama list`
+    rank:
+      provider: ollama
+      model: llama3.1:8b      # VERIFY with `ollama list`
+
+# Resolved from `profiles[default_profile]` at load time. Left here so the
+# router still works if it is handed this file directly, with no profile.
 tiers:
   candidates:
-    # Pass 1, one call per episode. 50 calls, high volume, recall task:
-    # find every span that could work, do not be tasteful about it.
     provider: gemini
     model: gemini-3.5-flash-lite
   rank:
-    # Pass 2, season-wide. Scores the shortlist on the rubric. Precision task.
-    # Same model as pass 1 for now - see the note in shorts-clipper's
-    # settings.yaml: gemini-3.8-flash 503s on real payloads on this account.
-    # Move this up when that stops.
     provider: gemini
     model: gemini-3.5-flash-lite
 
@@ -44,6 +134,81 @@ providers:
       rpm: 30
       tpm: 12000
       rpd: 1000
+
+  claude:
+    api_key_env: ANTHROPIC_API_KEY
+    # Reasoning depth. Config, not code. `medium` is the model default and is
+    # plenty for scoring four axes on a 40-second clip; raise to `high` only
+    # if the eval shows the scores are mushy.
+    effort: medium
+    # Paid tier 1 defaults. Raise once the account's real limits are known.
+    limits:
+      rpm: 50
+      tpm: 30000
+      rpd: 0        # 0 disables the daily cap
+
+  gpt:
+    api_key_env: OPENAI_API_KEY
+    limits:
+      rpm: 50
+      tpm: 30000
+      rpd: 0
+
+  ollama:
+    # No api_key_env: the local daemon has no credentials. The router's auth
+    # path is skipped entirely for this provider.
+    base_url: http://localhost:11434
+    # Every limit is 0 = unlimited. This is the one provider where the
+    # token-bucket limiter is genuinely unnecessary rather than merely
+    # generous: the constraint is the GPU, not a quota, and the limiter
+    # cannot see the GPU. Concurrency is bounded by run.py's worker count.
+    limits:
+      rpm: 0
+      tpm: 0
+      rpd: 0
+
+# USD per 1,000,000 tokens, keyed by model id. run.py totals the real token
+# counts out of llm.log against this table, so the cost number in the write-up
+# is measured rather than guessed. Free tiers are 0 by definition.
+# Paid rates VERIFIED 2026-11-07 against the vendors' own pricing pages; see
+# the note on the two paid lines below. Re-check before quoting them again:
+# platform.claude.com/docs/en/about-claude/pricing (Anthropic),
+# developers.openai.com/api/docs/pricing (OpenAI).
+pricing:
+  gemini-3.5-flash-lite:   {in: 0.00,  out: 0.00}   # free tier
+  llama-3.3-70b-versatile: {in: 0.00,  out: 0.00}   # free tier
+  llama3.1:8b:             {in: 0.00,  out: 0.00}   # local, no marginal cost
+  # VERIFIED against the vendors' own pricing pages, 2026-11-07 (P4/D22).
+  # Both the model ids and both rate cards came back exactly as configured,
+  # so nothing here moved - the point of checking was that MISTAKES #7 had
+  # them written down from memory, which is not evidence.
+  #   Opus 5.5    $4 / $20   platform.claude.com/docs/en/about-claude/pricing
+  #   GPT-6 Astra $10 / $50  developers.openai.com/api/docs/pricing
+  # Both vendors also offer batch at 50% and cached input far cheaper; this
+  # pipeline uses neither, so the standard rate is the honest one to quote.
+  claude-opus-5-5:         {in: 4.00,  out: 20.00}
+  gpt-6-astra:             {in: 10.00, out: 50.00}
+
+# Measured per tier out of llm.log, for a FRESH 45-episode run in the shipping
+# config (nothing served from cache): candidates 45 calls / 170,416 in /
+# 16,110 out, rank 10 calls / 68,030 in / 12,320 out.
+#
+#   profile            full season   per episode   per 1,000 episodes
+#   free / local          $0.00         $0.00            $0.00
+#   mixed                 $0.52         $0.012            ~$12
+#   claude                $1.52         $0.034            ~$34
+#   gpt                   $3.81         $0.085            ~$85
+#
+# NOTE, and it corrects D13: `mixed` saves **66%**, not ~98%. D13 described it
+# as "~1 paid call per 50 free ones". The real ratio is **4.5 candidate calls
+# per rank call** (45:10), because rank batches 12 candidates per call and runs
+# two passes, and each rank payload carries all 12 candidates' text. Rank is
+# 29% of input tokens but 43% of output tokens, and output is 5x the price.
+#
+# Do not quote the 507,340 / 77,908 totals in run_summary.json as a cost basis:
+# those count cache hits and earlier experimental configs, so they overstate a
+# fresh run by ~2.4x. Local trades the cost line for a hardware line rather
+# than removing it.
 
 llm:
   max_attempts: 4

@@ -23,7 +23,8 @@ pip install -r requirements.txt
 python -I notes/stats.py          # re-derive the input stats in FORMAT.md
 python -m promo.parse <episode>   # (to build) parse one episode, dump blocks
 python -m promo.run               # (to build) the whole season -> outputs/
-python app.py                     # (to build) the Gradio demo
+uvicorn api.main:app --port 8000   # the demo: API + built React app, one URL
+cd web && npm install && npm run build   # build web/dist, which FastAPI serves
 ```
 
 `src/` is not installed as a package yet; either add a `pyproject.toml` or run
@@ -53,8 +54,34 @@ load-bearing. They are still load-bearing.
    `rerank.system.md` scores tension that *resolves* inside the clip as good;
    here, unresolved at the cut is the goal. **Write the prompts fresh.** Do not
    open the old file to adapt it - the framing leaks through. See D5.
-7. **Label the eval set before running the tool.** `eval/README.md`. Not
-   negotiable; it is the difference between an eval and a rationalisation.
+
+There used to be a seventh: *label the eval set before running the tool, not
+negotiable.* It is gone, and what replaced it is below.
+
+## Known limitation: the eval was not performed
+
+**Episodes 1, 44, 36, 17, 29 were held out to be hand-labelled blind first, and
+then run with the other 45 without labels, because there was no time to label
+them before the deadline.** The user's call, with the cost stated first - a
+complete 50-episode season output was judged worth more than a quality-checking
+section that could not be finished. See **D28** in `DECISIONS.md`.
+
+This is recorded as a limitation rather than kept as a rule, because a hard
+rule the build permanently cannot satisfy reads as an unnoticed violation,
+while a limitation stated in the open is the honest form. The *method* in
+`eval/README.md` is still right, and that file is kept intact.
+
+What follows from it, and the write-up should say so plainly:
+
+- **Nothing external constrains pick quality.** Every number in
+  `notes/ACCURACY.md` - coverage, durations, gate rejections, score stability -
+  is the tool measured against itself. None of it compares a pick to a human's.
+- **`eval/labels.json` cannot be used as ground truth.** `compare.py:112` and
+  `labels.py:287` both raise while `tool_had_been_run` is true, and that flag
+  is now honestly true.
+- **Labels written from here on are a post-hoc, non-blind agreement check.**
+  Reportable, as long as they are described exactly that way, and never as
+  ground truth.
 
 ## What was borrowed, and what wasn't
 
@@ -63,8 +90,15 @@ also at github.com/Akhillavudya/shorts-clipper):
 
 - `src/promo/llm/` - the whole router: tier dispatch, token-bucket rate
   limiting, exponential backoff with jitter, provider failover, and the
-  response cache. Renamed `clipper.llm` -> `promo.llm`, otherwise untouched.
+  response cache. Renamed `clipper.llm` -> `promo.llm`.
   This is the part that makes 50 calls on a free tier survivable.
+
+  **No longer "otherwise untouched" - D18 reorganised it.** Providers now sit
+  in `free/` (gemini, groq), `paid/` (claude, gpt) and `local/` (ollama),
+  grouped by what they cost to run. `router.py` changed by five import lines
+  and a comment; no provider file's contents changed; `base.py`, `cache.py` and
+  `limiter.py` are untouched. `paid/` and `local/` were never in
+  shorts-clipper's layout, so the 20% overlap figure is unaffected.
 - `config/settings.yaml` - the tiers/providers/llm blocks, with the tier names
   changed to `candidates` and `rank`.
 

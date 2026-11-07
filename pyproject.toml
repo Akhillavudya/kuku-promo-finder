@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kuku-promo-finder"
+version = "0.1.0"
+description = "Find 20-60s promos in microdrama screenplays. Kuku AI Generalist Assignment, Problem 1."
+requires-python = ">=3.11"
+dependencies = [
+  "httpx>=0.27",
+  "pyyaml>=6.0",
+  "google-genai>=1.0",
+]
+
+[project.optional-dependencies]
+# The free tier needs nothing beyond `dependencies`. These are the paid
+# escape hatches - see config/settings.yaml `profiles`. Installing them is
+# never required to run the project.
+claude = ["anthropic>=0.40"]
+gpt = ["openai>=1.40"]
+all = ["anthropic>=0.40", "openai>=1.40"]
+# No `app` extra: the demo's server deps are in `api/requirements.txt` and its
+# client is built by npm (D16). Nothing the demo needs is a Python extra.
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+promo = ["prompts/*.md"]

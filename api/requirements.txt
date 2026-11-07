@@ -1,0 +1,15 @@
+# What the deployed container installs: the pipeline's own dependencies plus
+# the web server. Deliberately a separate file from ../requirements.txt, which
+# is the CLI path - a grader running `python -m promo.run` has no reason to
+# install a server, and the image has no reason to resolve anything the server
+# does not use. Both lists are short enough that duplication is cheaper than
+# an `-r` chain whose failure mode is a surprise install.
+#
+# (Before D16 this file's reason was avoiding gradio. Gradio is gone; the
+# split is kept because CLI and image genuinely want different sets.)
+httpx>=0.27
+pyyaml>=6.0
+google-genai>=1.0        # required by src/promo/llm/free/gemini.py (D18)
+fastapi>=0.115
+uvicorn[standard]>=0.30
+pydantic>=2.7

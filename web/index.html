@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark" />
+    <meta
+      name="description"
+      content="Finds 20-60 second promos in microdrama screenplays: hooked in the first three seconds, cut on an unresolved cliffhanger."
+    />
+    <title>Promo finder</title>
+
+    <!--
+      IBM Plex, one superfamily in three voices: Sans for the interface, Mono
+      for every timecode and score, and Serif italic for quoted dialogue only
+      - the hook is a line someone says on screen, not interface text, and
+      typesetting it differently is the point. Weights are pinned to the five
+      actually used so the request stays small.
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@1,400&display=swap"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

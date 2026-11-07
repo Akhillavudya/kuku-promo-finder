@@ -1,23 +1,171 @@
 {
-  "_comment": "Copy to labels.json and fill in. One object per episode. Written BEFORE the tool was run - that is the whole point of this file.",
+  "_comment": "Copy to labels.json and fill in. Written BEFORE the tool was run - that is the whole point of this file. All five episodes are scaffolded so you only fill blanks; delete nothing. Protocol: eval/README.md.",
+  "_how_rejected_works": "`rejected` is the fourth measure and the one that teaches you something. `what` and `why_not` are for you; `segments` is what compare.py actually reads, so a rejected span with no block indices is invisible to the report. Record it even roughly - the hit threshold is 50% overlap, not exactness.",
   "labelled_by": "Akhil",
-  "labelled_at": "2026-11-06",
+  "labelled_at": "",
   "tool_had_been_run": false,
   "labels": [
     {
       "episode": 1,
+      "_episode_note": "138s - series opener, the only episode with no prior context at all",
       "in_one_sentence": "",
       "segments": [
-        { "start_block": null, "end_block": null, "start_s": null, "end_s": null }
+        {
+          "start_block": null,
+          "end_block": null,
+          "start_s": null,
+          "end_s": null
+        }
       ],
       "duration_s": null,
       "hook": "the line or beat that lands in the first 3 seconds",
       "cliffhanger": "the unresolved thing it cuts on",
       "why": "one line - why a stranger would watch the episode after this",
       "rejected": [
-        { "what": "the other span you considered", "why_not": "" }
+        {
+          "what": "the other span you considered",
+          "why_not": "",
+          "segments": [
+            {
+              "start_block": null,
+              "end_block": null,
+              "start_s": null,
+              "end_s": null
+            }
+          ]
+        }
       ],
       "confidence": "high | medium | low"
+    },
+    {
+      "episode": 44,
+      "_episode_note": "70s - shortest in the season, a 60s promo is 86% of it",
+      "in_one_sentence": "",
+      "segments": [
+        {
+          "start_block": null,
+          "end_block": null,
+          "start_s": null,
+          "end_s": null
+        }
+      ],
+      "duration_s": null,
+      "hook": "",
+      "cliffhanger": "",
+      "why": "",
+      "rejected": [
+        {
+          "what": "",
+          "why_not": "",
+          "segments": [
+            {
+              "start_block": null,
+              "end_block": null,
+              "start_s": null,
+              "end_s": null
+            }
+          ]
+        }
+      ],
+      "confidence": ""
+    },
+    {
+      "episode": 36,
+      "_episode_note": "201s - longest, most room to choose badly",
+      "in_one_sentence": "",
+      "segments": [
+        {
+          "start_block": null,
+          "end_block": null,
+          "start_s": null,
+          "end_s": null
+        }
+      ],
+      "duration_s": null,
+      "hook": "",
+      "cliffhanger": "",
+      "why": "",
+      "rejected": [
+        {
+          "what": "",
+          "why_not": "",
+          "segments": [
+            {
+              "start_block": null,
+              "end_block": null,
+              "start_s": null,
+              "end_s": null
+            }
+          ]
+        }
+      ],
+      "confidence": ""
+    },
+    {
+      "episode": 17,
+      "_episode_note": "119s - median",
+      "in_one_sentence": "",
+      "segments": [
+        {
+          "start_block": null,
+          "end_block": null,
+          "start_s": null,
+          "end_s": null
+        }
+      ],
+      "duration_s": null,
+      "hook": "",
+      "cliffhanger": "",
+      "why": "",
+      "rejected": [
+        {
+          "what": "",
+          "why_not": "",
+          "segments": [
+            {
+              "start_block": null,
+              "end_block": null,
+              "start_s": null,
+              "end_s": null
+            }
+          ]
+        }
+      ],
+      "confidence": ""
+    },
+    {
+      "episode": 29,
+      "_episode_note": "117s - median, second sample",
+      "in_one_sentence": "",
+      "segments": [
+        {
+          "start_block": null,
+          "end_block": null,
+          "start_s": null,
+          "end_s": null
+        }
+      ],
+      "duration_s": null,
+      "hook": "",
+      "cliffhanger": "",
+      "why": "",
+      "rejected": [
+        {
+          "what": "",
+          "why_not": "",
+          "segments": [
+            {
+              "start_block": null,
+              "end_block": null,
+              "start_s": null,
+              "end_s": null
+            }
+          ]
+        }
+      ],
+      "confidence": ""
     }
-  ]
+  ],
+  "_how_to_fill_a_span": "Write start_block and end_block ONLY - the block your promo opens on and the block it cuts on. Leave start_s, end_s and duration_s as null: `PYTHONPATH=src python -m promo.labels --write` resolves them through the same block table that turns the model's answers into timestamps. You do no arithmetic. Print the worksheet with `PYTHONPATH=src python -m promo.parse <episode>`.",
+  "_check_before_running_the_tool": "PYTHONPATH=src python -m promo.labels --write   # resolves seconds, names every problem, exits non-zero while anything would break the report"
 }

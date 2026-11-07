@@ -3,6 +3,7 @@
 pack/
 brief/
 
+
 # Secrets
 .env
 *.env
@@ -24,3 +25,27 @@ __pycache__/
 .idea/
 .DS_Store
 Thumbs.db
+
+# The React frontend: dependencies and build output. `web/dist` is built by
+# the Dockerfile (and by `npm run build` locally), never committed - the
+# deployable artifact is the image, not a checked-in bundle.
+web/node_modules/
+web/dist/
+
+# Labelling worksheets: these contain pack content (hard rule 5).
+eval/worksheets/
+
+
+
+# Internal working notes, kept local and out of the repo by decision
+# (2026-11-08). These are the build's own reasoning and scratch documents,
+# not part of what is deployed or handed over: the deliverable is SOLUTION.md
+# exported to PDF, plus the prototype link.
+#
+# None of this reaches the container either - `.dockerignore` already drops
+# `notes/` and every `*.md`, so untracking them cannot affect a build.
+notes/
+DECISIONS.md
+SOLUTION.md
+START_HERE.md
+my_findings.md
