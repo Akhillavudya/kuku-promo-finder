@@ -17,3 +17,15 @@ services:
       # Set this in the Render dashboard, never in this file.
       - key: GEMINI_API_KEY
         sync: false
+      # The frontend's origin, for CORS. Not a secret, so it is written here
+      # rather than left to the dashboard: declared, it shows up in the
+      # service's Environment tab where it can be read and corrected, instead
+      # of living only as a default inside api/main.py. Scheme-exact and
+      # comma-separated - `http://` and `https://` are different origins, and
+      # so are `example.com` and `www.example.com`.
+      #
+      # Editing it in the dashboard takes a restart, not a rebuild. Note that
+      # re-syncing this blueprint will push this value back over a dashboard
+      # edit, so a permanent change belongs here.
+      - key: ALLOWED_ORIGINS
+        value: https://promofinder.byfrontage.com
