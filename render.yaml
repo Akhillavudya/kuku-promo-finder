@@ -14,8 +14,16 @@ services:
     dockerfilePath: ./Dockerfile
     healthCheckPath: /api/health
     envVars:
-      # Set this in the Render dashboard, never in this file.
+      # Set these in the Render dashboard, never in this file.
       - key: GEMINI_API_KEY
+        sync: false
+      # The failover provider from settings.yaml's `fallback` block. Without
+      # it the failover is configured and dead: the router builds providers
+      # lazily, so nothing complains at boot or in /api/health, and the cost
+      # only lands when Gemini actually rate-limits - the run ends as
+      # NoProviderAvailable instead of falling over. Free key at
+      # console.groq.com. Optional: a run without it still works.
+      - key: GROQ_API_KEY
         sync: false
       # The frontend's origin, for CORS. Not a secret, so it is written here
       # rather than left to the dashboard: declared, it shows up in the
@@ -27,5 +35,7 @@ services:
       # Editing it in the dashboard takes a restart, not a rebuild. Note that
       # re-syncing this blueprint will push this value back over a dashboard
       # edit, so a permanent change belongs here.
+      # Both subdomains, because an allowlist is not a redirect: the old name
+      # keeps working for anyone holding that link until it is taken down.
       - key: ALLOWED_ORIGINS
-        value: https://promofinder.byfrontage.com
+        value: https://kukupromofinder.byfrontage.com,https://promofinder.byfrontage.com

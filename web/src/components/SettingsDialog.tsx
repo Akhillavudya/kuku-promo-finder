@@ -5,7 +5,9 @@
  * live run uses, and the key that profile needs. Choosing Claude without a
  * place to paste an Anthropic key would be a setting that cannot be acted
  * on, so the key fields follow the selection and only the selected profile's
- * providers get one.
+ * providers get one - plus the failover provider from the YAML's `fallback`
+ * block, marked as such, because a key it never gets is a safety net that
+ * silently is not there.
  *
  * The rows come from `GET /api/profiles`, which reads `config/settings.yaml`.
  * Nothing here knows what a Gemini or a Claude is: it renders whatever
@@ -241,6 +243,7 @@ export default function SettingsDialog({
               <div className="pf-field pf-field-block" key={need.provider}>
                 <label className="pf-label" htmlFor={`pf-key-${need.provider}`}>
                   <Icon name="key" /> {need.provider} API key
+                  {!need.required && <span className="pf-tag">failover</span>}
                 </label>
                 {typing ? (
                   <input
@@ -253,7 +256,9 @@ export default function SettingsDialog({
                     placeholder={
                       need.on_server
                         ? `optional - ${need.env} is already set on the server`
-                        : `paste your ${need.provider} key`
+                        : need.required
+                          ? `paste your ${need.provider} key`
+                          : `optional - only used if the main model fails`
                     }
                     onChange={(event) => setKey(need.provider, event.target.value)}
                   />
@@ -276,10 +281,16 @@ export default function SettingsDialog({
                       The server already has <code>{need.env}</code>, so this is
                       optional - paste one to use your own quota instead.
                     </>
-                  ) : (
+                  ) : need.required ? (
                     <>
                       The server has no <code>{need.env}</code>, so a live run
                       on this profile needs a key here.
+                    </>
+                  ) : (
+                    <>
+                      The second chance, not the first: this provider is only
+                      called if the model above fails or rate-limits. A run
+                      works without it and just has nothing to fall back to.
                     </>
                   )}{" "}
                   It is kept in this browser only and sent with the run request;

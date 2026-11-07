@@ -103,7 +103,13 @@ app = FastAPI(
 # an `Authorization` header - a key pasted in the browser travels in the POST
 # body (see `_inject_keys`) - so sending credentials would be permission
 # granted for nothing, and it would also forbid a wildcard origin later.
+# Both subdomains are listed on purpose. The published name is
+# `kukupromofinder`; `promofinder` was the first one created and still
+# resolves, and an allowlist is not a redirect - naming both means whichever
+# one a reader has in hand works, and taking the old one down later needs no
+# code change.
 DEFAULT_ALLOWED_ORIGINS = (
+    "https://kukupromofinder.byfrontage.com,"
     "https://promofinder.byfrontage.com,"
     "http://localhost:5173,"
     "http://127.0.0.1:5173"
@@ -166,6 +172,30 @@ def _providers_for(settings: dict[str, Any]) -> list[str]:
     return names
 
 
+def _fallback_providers(settings: dict[str, Any]) -> list[str]:
+    """The failover provider, when it is not already one of the tiers.
+
+    Separate from `_providers_for` because the difference is load-bearing: a
+    tier provider is *required* - without its key the run cannot start - while
+    this one is only reached if a tier call fails, and the router builds it
+    lazily (see the comment at `router.py:148`). So a missing key here must
+    never block a run, must never flip `/api/health` to `has_key: false`, and
+    must still be offerable in the Settings dialog, because the cost of not
+    offering it is invisible: Gemini 429s and the run dies with
+    `NoProviderAvailable` instead of falling over to the net that the config
+    says exists.
+    """
+    name = ((settings.get("fallback") or {}).get("provider") or "").strip()
+    if not name or name in _providers_for(settings):
+        return []
+    return [name]
+
+
+def _key_providers(settings: dict[str, Any]) -> list[str]:
+    """Every provider a key can be pasted for: the tiers, then the fallback."""
+    return [*_providers_for(settings), *_fallback_providers(settings)]
+
+
 def _key_env(settings: dict[str, Any], provider: str) -> str | None:
     """The environment variable a provider reads, or None if it needs no key."""
     cfg = (settings.get("providers") or {}).get(provider) or {}
@@ -206,8 +236,11 @@ def _profile_card(name: str) -> dict[str, Any]:
                 "provider": p,
                 "env": _key_env(settings, p),
                 "on_server": _server_has_key(settings, p),
+                # False = the failover provider. The dialog says so, rather
+                # than presenting it as another thing that must be filled in.
+                "required": p in providers,
             }
-            for p in providers
+            for p in _key_providers(settings)
             if _key_env(settings, p) is not None
         ],
     }
@@ -235,7 +268,7 @@ def _inject_keys(
     blocks = settings.setdefault("providers", {})
     for provider, key in keys.items():
         key = (key or "").strip()
-        if not key or provider not in _providers_for(settings):
+        if not key or provider not in _key_providers(settings):
             continue
         block = blocks.setdefault(provider, {})
         if not block.get("api_key_env"):

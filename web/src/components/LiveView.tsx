@@ -81,7 +81,7 @@ export default function LiveView({
           No API key for{" "}
           <strong>
             {selected.keys
-              .filter((need) => !need.on_server)
+              .filter((need) => need.required && !need.on_server)
               .map((need) => need.provider)
               .join(", ")}
           </strong>

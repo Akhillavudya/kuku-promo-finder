@@ -140,13 +140,17 @@ export default function App() {
 
   /** Every provider the profile needs has a key somewhere, and whether any
    *  of them came from this browser. Mirrors the server's own check in
-   *  `POST /api/run`, which is the one that actually gates the call. */
+   *  `POST /api/run`, which is the one that actually gates the call.
+   *
+   *  `required` matters here: the failover provider is in `keys` so a key can
+   *  be pasted for it, but the server does not refuse a run without it, so
+   *  counting it would raise a "no API key" warning for a run that works. */
   const keyFromBrowser = (selected?.keys ?? []).some(
     (need) => !!settings.keys[need.provider],
   );
-  const keyReady = (selected?.keys ?? []).every(
-    (need) => need.on_server || !!settings.keys[need.provider],
-  );
+  const keyReady = (selected?.keys ?? [])
+    .filter((need) => need.required)
+    .every((need) => need.on_server || !!settings.keys[need.provider]);
 
   const onSaveSettings = useCallback((next: ModelSettings) => {
     setSettings(saveSettings(next));

@@ -243,6 +243,13 @@ export interface ProfileKey {
   /** The environment variable the server would read, e.g. `GEMINI_API_KEY`. */
   env: string;
   on_server: boolean;
+  /**
+   * True for a tier provider, which a run cannot start without. False for the
+   * failover provider from the YAML's `fallback` block: it is reached only
+   * when a tier call fails, so a run without its key works and simply has no
+   * net. The dialog labels the difference rather than asking for both alike.
+   */
+  required: boolean;
 }
 
 /** One row of the model picker. */
